@@ -1,0 +1,14 @@
+@media screen and (max-width: 475px)
+{
+	ul.dropdown{
+		display:none !important;
+	}
+	ul.dropdown2{
+		display:none !important;
+	}
+}
+@media screen and (max-width: 767px)
+{
+	#leftmenu #left{
+	}
+}

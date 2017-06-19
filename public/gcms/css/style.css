@@ -1,0 +1,99 @@
+body{
+	font-family: 'Roboto', sans-serif;
+	color:#777;
+}
+.form-horizontal .control-label{
+	text-align: left;
+}
+.cls{
+	clear:left;
+}
+.npd{
+	padding-left:0px;
+	padding-right:0px;
+}
+#topmenu nav{
+	/*background: #333;*/
+	/*border-color:#333;*/
+	border-radius: 0px;
+	z-index: 999999;
+}
+#topmenu .navbar-brand{
+	text-transform: uppercase;
+}
+#leftmenu {
+	padding-left:0px;
+	z-index:99999;
+}
+#leftmenu #left{
+	background: #f8f8f8;
+	border:1px solid #eee;
+}
+#leftmenu ul li a{
+	color:#777;
+}
+#leftmenu ul li {
+	list-style: none;
+}
+#leftmenu ul.dropdown{
+	display:none;
+}
+#leftmenu ul.dropdown2{
+	display:none;
+}
+#leftmenu ul.dropdown2 li{
+	padding:5px;
+}
+#leftmenu ul.dropdown2 li.active a{
+	font-weight: bold;
+}
+#leftmenu ul.dropdown li{
+	padding:5px;
+	margin-left: -25px;
+}
+#leftmenu li:hover ul.dropdown{
+	display:block;
+}
+#leftmenu li ul.dropdown2{
+	display:block;
+}
+#leftmenu ul.dropdown{
+	background: #fff;
+	border:1px solid #cdcdcd;
+	position: absolute;
+    right: 0px;
+    top: 0px;
+    left: 195px;
+    width: 180px;
+}
+#main{
+	padding-left:0px;
+}
+.add{
+	width:10%;
+	float:left;
+}
+.setting{
+	width:20%;
+	float:left;
+}
+.locds{
+	width:70%;
+	float:left;
+	margin-right:5px;
+}
+.search{
+	width:40%;
+	float:left;
+}
+.searchds{
+	width:75%;
+	float:left;
+	margin-right:5px;
+}
+.rightselect{
+	margin-bottom:10px;
+}
+.pagination{
+	margin:0px !important;
+}
