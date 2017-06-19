@@ -25,4 +25,21 @@ $(document).ready(function() {
 			$("#checkedAll").prop("checked", false);
 		}
 	});
+	
+	/*
+	 * Ajax jQuery
+	 * Phần select box số hiển thị bài viết
+	 */
+	$("#numberpage").change(function(){
+		number = $("#numberpage").val();
+		$.ajax({
+			"url":baseUrl+"gcms/user/shownumber",
+			"type":"POST",
+			"data":"number="+number,
+			"success":function(result){
+				location.reload();
+//				$("#result").html(result);
+			}
+		})
+	});
 });

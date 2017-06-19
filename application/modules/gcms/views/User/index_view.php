@@ -35,6 +35,7 @@ if ($error != "") {
 </div>
 <div class="cls"></div>
 <form action="<?php echo base_url()."gcms/user/deletecb" ?>" method="post" name="formdeletecb" id="formdeletecb" >
+<div id="result">
 <div class="table-responsive">
 	<table class="table table-bordered">
 		<tr class="info">
@@ -80,18 +81,19 @@ if ($error != "") {
 	}
 	?>
 </table>
+</div>
 <div class="col-md-4 col-md-push-3 npd" align="center">
 	<?php echo $pagination; ?>
 </div>
 <div class="col-md-4 col-md-pull-4 npd" align="left">
 			<div class="form-group">
-				<select class="form-control" style="width: 20%;">
-					<option>5</option>
-					<option>10</option>
-					<option>20</option>
-					<option>30</option>
-					<option>50</option>
-					<option>100</option>
+				<select class="form-control" id="numberpage" style="width: 20%;">
+					<option value="5" <?php if($this->session->userdata("limit") == 5) echo "selected"; ?>>5</option>
+					<option value="10" <?php if($this->session->userdata("limit") == 10) echo "selected"; ?>>10</option>
+					<option value="20" <?php if($this->session->userdata("limit") == 20) echo "selected"; ?>>20</option>
+					<option value="30" <?php if($this->session->userdata("limit") == 30) echo "selected"; ?>>30</option>
+					<option value="50" <?php if($this->session->userdata("limit") == 50) echo "selected"; ?>>50</option>
+					<option value="100" <?php if($this->session->userdata("limit") == 100) echo "selected"; ?>>100</option>
 				</select>
 			</div>
 </div>

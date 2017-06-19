@@ -11,7 +11,7 @@ class User extends AdminController {
 		// config setting phần phân trang.
 		$config ['base_url'] = base_url () . "gcms/user/index/";
 		$config ['total_rows'] = $this->Muser->countAll ();
-		$config ['per_page'] = 10;
+		$config ['per_page'] = ($this->session->userdata("limit")) ? $this->session->userdata("limit") : 10;
 		$config ['uri_segment'] = 4;
 		$config ['full_tag_open'] = '<ul class="pagination">';
 		$config ['full_tag_close'] = '</ul>';
@@ -39,9 +39,20 @@ class User extends AdminController {
 		$current_page = ($this->uri->segment ( 4 )) ? $this->uri->segment(4) : 1;
 		$start = ($current_page-1) * $config ['per_page'];
 // 		echo $start;
+// 		echo $config ['per_page'];
 		$this->_data ['data'] = $this->Muser->listAllUser ( $config ['per_page'], $start);
 // 		echo $this->db->last_query();
 		$this->load->view ( $this->_data ['path'], $this->_data );
+	}
+	/*
+	 * Phần jQuery Ajax để hiển thị số bài viết theo number được chọn ở select box.
+	 */
+	public function shownumber() {
+		$number = $this->input->post("number");
+		$ses_number = array(
+				"limit" => $number,
+		);
+		$this->session->set_userdata($ses_number);
 	}
 	public function add() {
 		$this->_data ['error'] = "";

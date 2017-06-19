@@ -19,12 +19,12 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+<script>
+var baseUrl="<?php echo base_url();?>";
+</script>
 <script
 	src="<?php echo base_url(); ?>public/gcms/js/jquery-3.2.1.min.js"></script>
 <script src="<?php echo base_url(); ?>public/gcms/js/jquery_code.js"></script>
-<script>
-
-</script>
 </head>
 <body>
 	<div id="topmenu">
