@@ -59,6 +59,7 @@ class User extends AdminController {
 				$this->_data ['data'] = $this->Muser->listAllUserDeactive($config ['per_page'], $start );
 			}
 		} else {
+			// Nếu không tồn tại biến post nào thì tự động hiểu và show ra những bản ghi mới nhất.
 			$this->_data ['data'] = $this->Muser->listAllUser ( $config ['per_page'], $start );
 		}
 // 		 echo $this->db->last_query();
