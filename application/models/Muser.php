@@ -44,6 +44,21 @@ class Muser extends CI_Model {
 		$this->db->limit ( $all, $start );
 		return $this->db->get ( $this->_table )->result_array ();
 	}
+	public function SearchUserByKeyword($keyword,$all,$start,$order="desc", $active=""){
+		if($active != ""){
+			$this->db->where("active", $active);
+		}
+		$this->db->limit ( $all, $start );
+		$this->db->order_by("id",$order);
+		$this->db->like('username',$keyword);
+		$query = $this->db->get($this->_table);
+		return $query->result_array();
+	}
+	public function countSearchUser($keyword){
+		$this->db->like('username',$keyword);
+		$query = $this->db->get($this->_table);
+		return $query->num_rows();
+	}
 	public function countAll() {
 		return $this->db->count_all ( $this->_table );
 	}

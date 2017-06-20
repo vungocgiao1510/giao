@@ -9,9 +9,11 @@ class User extends AdminController {
 		$this->_data ['error'] = $this->session->flashdata ( "flash_error" );
 		$this->_data ['success'] = $this->session->flashdata ( "flash_mess" );
 		$this->_data ['data'] = "";
+		$this->_data['keyword'] = "";
+		$this->_data['countSearch'] = "";
 		// config setting phần phân trang.
 		$config ['base_url'] = base_url () . "gcms/user/index/";
-		$config ['total_rows'] = $this->Muser->countAll ();
+		$config ['total_rows'] = ($this->input->get("keyword")) ? $this->Muser->countSearchUser($this->input->get("keyword")) : $this->Muser->countAll ();
 		$config ['per_page'] = ($this->session->userdata ( "limit" )) ? $this->session->userdata ( "limit" ) : 10;
 		$config ['uri_segment'] = 4;
 		$config ['full_tag_open'] = '<ul class="pagination">';
@@ -46,13 +48,20 @@ class User extends AdminController {
 			$this->session->set_userdata($ses_locds);
 		}
 		$locds = $this->session->userdata("locds");
-		$this->_data['locds'] = $locds;
-		if($locds == "desc" || $locds == "asc"){
-			$this->_data ['data'] = $this->Muser->listAllUser ( $config ['per_page'], $start, $locds );
+		$this->_data['locds'] = $locds;		
+		
+		if($this->input->get("keyword")){
+			$ses_search = array("keyword" => $this->input->get("keyword"));
+			$this->session->set_userdata($ses_search);
+			$this->_data['keyword'] = $this->session->userdata("keyword");
+			$this->_data['countSearch'] = $this->Muser->countSearchUser($this->_data['keyword']);
+			$this->_data['data'] = $this->Muser->SearchUserByKeyword($this->_data['keyword'],$config['per_page'], $start);
+		}elseif($locds == "desc" || $locds == "asc"){
+			$this->_data ['data'] = $this->Muser->listAllUser ( $config['per_page'], $start, $locds );
 		} elseif ($locds == "1" || $locds == "2") {
-			$this->_data ['data'] = $this->Muser->listAllUser ( $config ['per_page'], $start,"", $locds );
-		}else {
-			$this->_data ['data'] = $this->Muser->listAllUser ( $config ['per_page'], $start );
+			$this->_data ['data'] = $this->Muser->listAllUser ( $config['per_page'], $start,"", $locds );
+		} else {
+			$this->_data ['data'] = $this->Muser->listAllUser ( $config['per_page'], $start );
 		}
 // 		echo $this->db->last_query();
 		$this->load->view ( $this->_data ['path'], $this->_data );

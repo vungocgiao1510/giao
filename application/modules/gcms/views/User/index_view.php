@@ -24,12 +24,12 @@ if ($error != "") {
 		</form>
 	</div>
 	<div class="search">
-		<form>
+	<form action="" method="GET">
 			<div class="form-group">
-				<input type="text" class="form-control searchds" id="" name="keyword" placeholder="Nhập tên thành viên cần tìm.">
-				<input type="submit" name="loc" value="Tìm kiếm" class="btn btn-primary" />
-			</div>
-		</form>
+				<input type="text" class="form-control searchds" name="keyword" id="keyword" placeholder="Nhập tên thành viên cần tìm." required>
+				<input type="submit" id="searchform" value="Tìm kiếm" class="btn btn-primary" />
+			</div>	
+	</form>
 	</div>
 
 </div>
@@ -78,6 +78,8 @@ if ($error != "") {
 			echo "<td><a href='" . base_url () . "gcms/user/delete/$val[id]'>Xóa</a></td>";
 			echo "</tr>";
 		}
+	} else {
+		echo "<tr><td align='center' colspan='9'>Không có dữ liệu.</td></tr>";
 	}
 	?>
 </table>
@@ -85,6 +87,7 @@ if ($error != "") {
 <div class="col-md-4 col-md-push-3 npd" align="center">
 	<?php echo $pagination; ?>
 </div>
+</div>	
 <div class="col-md-4 col-md-pull-4 npd" align="left">
 			<div class="form-group">
 				<select class="form-control" id="numberpage" style="width: 20%;">
