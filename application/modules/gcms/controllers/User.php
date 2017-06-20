@@ -12,7 +12,8 @@ class User extends AdminController {
 		$this->_data['keyword'] = "";
 		$this->_data['countSearch'] = "";
 		// config setting phần phân trang.
-		$config ['base_url'] = base_url () . "gcms/user/index/";
+		$config ['base_url'] = ($this->input->get("keyword")) ? base_url () . "gcms/user/index/?keyword=".$this->input->get("keyword") : base_url () . "gcms/user/index/";
+// 		$config ['base_url'] = base_url () . "gcms/user/index/";
 		$config ['total_rows'] = ($this->input->get("keyword")) ? $this->Muser->countSearchUser($this->input->get("keyword")) : $this->Muser->countAll ();
 		$config ['per_page'] = ($this->session->userdata ( "limit" )) ? $this->session->userdata ( "limit" ) : 10;
 		$config ['uri_segment'] = 4;
@@ -35,6 +36,7 @@ class User extends AdminController {
 		$config ['cur_tag_open'] = '<li class="active"><a href="#">';
 		$config ['cur_tag_close'] = '</a></li>';
 		$config ['use_page_numbers'] = TRUE;
+		$config ['page_query_string']=TRUE;
 		// $config ['page_query_string'] = TRUE;
 		// Truyền $config vào initialize.
 		$this->pagination->initialize ( $config );
@@ -42,7 +44,7 @@ class User extends AdminController {
 		$current_page = ($this->uri->segment ( 4 )) ? $this->uri->segment ( 4 ) : 1;
 		$start = ($current_page - 1) * $config ['per_page'];
 		// echo $start;
-		// echo $config ['per_page'];
+// 		echo $config ['per_page'];
 		if($this->input->post("locds")){
 			$ses_locds = array("locds" => $this->input->post("locds"));
 			$this->session->set_userdata($ses_locds);
@@ -51,9 +53,9 @@ class User extends AdminController {
 		$this->_data['locds'] = $locds;		
 		
 		if($this->input->get("keyword")){
-			$ses_search = array("keyword" => $this->input->get("keyword"));
-			$this->session->set_userdata($ses_search);
-			$this->_data['keyword'] = $this->session->userdata("keyword");
+// 			$ses_search = array("keyword" => $this->input->get("keyword"));
+// 			$this->session->set_userdata($ses_search);
+			$this->_data['keyword'] = $this->input->get("keyword");
 			$this->_data['countSearch'] = $this->Muser->countSearchUser($this->_data['keyword']);
 			$this->_data['data'] = $this->Muser->SearchUserByKeyword($this->_data['keyword'],$config['per_page'], $start);
 		}elseif($locds == "desc" || $locds == "asc"){
