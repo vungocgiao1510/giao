@@ -8,10 +8,11 @@ class User extends AdminController {
 		$this->_data ['loadPage'] = "user/index_view";
 		$this->_data ['error'] = $this->session->flashdata ( "flash_error" );
 		$this->_data ['success'] = $this->session->flashdata ( "flash_mess" );
+		$this->_data ['data'] = "";
 		// config setting phần phân trang.
 		$config ['base_url'] = base_url () . "gcms/user/index/";
 		$config ['total_rows'] = $this->Muser->countAll ();
-		$config ['per_page'] = ($this->session->userdata("limit")) ? $this->session->userdata("limit") : 10;
+		$config ['per_page'] = ($this->session->userdata ( "limit" )) ? $this->session->userdata ( "limit" ) : 10;
 		$config ['uri_segment'] = 4;
 		$config ['full_tag_open'] = '<ul class="pagination">';
 		$config ['full_tag_close'] = '</ul>';
@@ -32,27 +33,46 @@ class User extends AdminController {
 		$config ['cur_tag_open'] = '<li class="active"><a href="#">';
 		$config ['cur_tag_close'] = '</a></li>';
 		$config ['use_page_numbers'] = TRUE;
-//  		$config ['page_query_string'] = TRUE;
+		// $config ['page_query_string'] = TRUE;
 		// Truyền $config vào initialize.
 		$this->pagination->initialize ( $config );
 		$this->_data ['pagination'] = $this->pagination->create_links ();
-		$current_page = ($this->uri->segment ( 4 )) ? $this->uri->segment(4) : 1;
-		$start = ($current_page-1) * $config ['per_page'];
-// 		echo $start;
-// 		echo $config ['per_page'];
-		$this->_data ['data'] = $this->Muser->listAllUser ( $config ['per_page'], $start);
-// 		echo $this->db->last_query();
+		$current_page = ($this->uri->segment ( 4 )) ? $this->uri->segment ( 4 ) : 1;
+		$start = ($current_page - 1) * $config ['per_page'];
+		// echo $start;
+		// echo $config ['per_page'];
+		if ($this->input->post ( "locds" )) {
+// 			echo $this->input->post ( "locds" );
+			if ($this->input->post ( "locds" ) == "desc") {
+				// Lọc theo danh sách mới nhất.
+				$this->_data ['data'] = $this->Muser->listAllUser ( $config ['per_page'], $start );
+			} elseif ($this->input->post ( "locds" ) == "desc") {
+				$this->_data ['data'] = $this->Muser->listAllUser ( $config ['per_page'], $start );
+			} elseif ($this->input->post ( "locds" ) == "asc") {
+				// Lọc theo danh sách cũ nhất.
+				$this->_data ['data'] = $this->Muser->listAllUserASC ( $config ['per_page'], $start );
+			} elseif ($this->input->post ( "locds" ) == "1") {
+				// Lọc theo danh sách đã kích hoạt.
+				$this->_data ['data'] = $this->Muser->listAllUserActive ($config ['per_page'], $start );
+			}elseif ($this->input->post ( "locds" ) == "2") {
+				// Lọc theo danh sách đã chưa kích hoạt.
+				$this->_data ['data'] = $this->Muser->listAllUserDeactive($config ['per_page'], $start );
+			}
+		} else {
+			$this->_data ['data'] = $this->Muser->listAllUser ( $config ['per_page'], $start );
+		}
+// 		 echo $this->db->last_query();
 		$this->load->view ( $this->_data ['path'], $this->_data );
 	}
 	/*
 	 * Phần jQuery Ajax để hiển thị số bài viết theo number được chọn ở select box.
 	 */
 	public function shownumber() {
-		$number = $this->input->post("number");
-		$ses_number = array(
-				"limit" => $number,
+		$number = $this->input->post ( "number" );
+		$ses_number = array (
+				"limit" => $number 
 		);
-		$this->session->set_userdata($ses_number);
+		$this->session->set_userdata ( $ses_number );
 	}
 	public function add() {
 		$this->_data ['error'] = "";
@@ -89,29 +109,29 @@ class User extends AdminController {
 		$this->_data ['loadPage'] = "user/myprofile_view";
 		$this->_data ['success'] = $this->session->flashdata ( "flash_mess" );
 		// Hiển thị thông tin member khi get được ID.
-		$this->_data ['data'] = $this->Muser->getUserById ( $this->session->userdata("id"));
+		$this->_data ['data'] = $this->Muser->getUserById ( $this->session->userdata ( "id" ) );
 		// Validation Form khi nhập sai thông tin.
 		$this->form_validation->set_message ( 'required', '{field} không được để trống.' );
 		$this->form_validation->set_message ( 'min_length', '{field} phải nhiều hơn 5 ký tự.' );
 		$this->form_validation->set_message ( 'max_length', '{field} phải nhỏ hơn 14 ký tự.' );
 		$this->form_validation->set_message ( 'matches', '{field} không đúng, vui lòng nhập lại.' );
-// 		$this->form_validation->set_rules ( 'username', 'Tài khoản', 'required|min_length[5]|max_length[14]|callback_check_user' );
+		// $this->form_validation->set_rules ( 'username', 'Tài khoản', 'required|min_length[5]|max_length[14]|callback_check_user' );
 		$this->form_validation->set_rules ( 'password', 'Mật khẩu', 'min_length[5]|max_length[14]' );
 		$this->form_validation->set_rules ( 'password2', 'Xác nhận mật khẩu', 'trim|matches[password]|min_length[5]|max_length[14]' );
 		if ($this->form_validation->run () == TRUE) {
 			// Mảng chưa dữ liệu cần update
 			$data_update = array (
-// 					"username" => $this->input->post ( "username" ),
-// 					"level" => $this->input->post ( "level" ),
+					// "username" => $this->input->post ( "username" ),
+					// "level" => $this->input->post ( "level" ),
 					"updated" => date ( "Y-m-d" ),
-					"active" => $this->input->post ( "active" )
+					"active" => $this->input->post ( "active" ) 
 			);
 			// Kiểm tra xem mật khẩu có hay không, nếu có thì thêm một mảng password vào để update.
 			if ($this->input->post ( "password" )) {
 				$data_update ["password"] = $this->input->post ( "password" );
 			}
 			// Update thành viên vào trong CSDL.
-			$this->Muser->updateUser ( $data_update, $this->session->userdata("id") );
+			$this->Muser->updateUser ( $data_update, $this->session->userdata ( "id" ) );
 			// Flashdata báo sửa thành công.
 			$this->session->set_flashdata ( "flash_mess", "Cập nhật hồ sơ thành công." );
 			redirect ( base_url () . "gcms/user/myprofile" );
@@ -184,7 +204,7 @@ class User extends AdminController {
 		if ($this->input->post ( "checkAll" )) {
 			foreach ( $this->input->post ( "checkAll" ) as $del_id ) {
 				$del_id = ( int ) $del_id;
-				$this->Muser->deleteUser ( $del_id);
+				$this->Muser->deleteUser ( $del_id );
 			}
 			$this->session->set_flashdata ( "flash_mess", "Hoàn tất thủ tục xóa thành viên." );
 			redirect ( base_url () . "gcms/user/index" );

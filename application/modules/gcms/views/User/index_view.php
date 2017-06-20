@@ -12,13 +12,13 @@ if ($error != "") {
 		<a href="<?php echo base_url()."gcms/user/add"; ?>" class="btn btn-primary">Thêm mới</a>
 	</div>
 	<div class="setting">
-		<form>
+		<form action="" method="POST">
 			<div class="form-group">
-				<select class="form-control locds">
-					<option>Mới nhất</option>
-					<option>Cũ nhất</option>
-					<option>Đã kích hoạt</option>
-					<option>Chưa kích hoạt</option>
+				<select class="form-control locds" name="locds">
+					<option value="desc" <?php if($this->input->post("locds") == "desc") echo "selected"; ?>>Mới nhất</option>
+					<option value="asc" <?php if($this->input->post("locds") == "asc") echo "selected"; ?>>Cũ nhất</option>
+					<option value="1" <?php if($this->input->post("locds") == "1") echo "selected"; ?>>Đã kích hoạt</option>
+					<option value="2" <?php if($this->input->post("locds") == "2") echo "selected"; ?>>Chưa kích hoạt</option>
 				</select> <input type="submit" name="loc" value="Lọc" class="btn btn-primary" />
 			</div>
 		</form>
