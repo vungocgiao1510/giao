@@ -49,6 +49,16 @@ if (validation_errors () != "") {
 			</select>
 		</div>
 		<div class="rightselect">
+		<label for="" class="">Chức vụ</label> <select multiple
+			class="form-control" name="role" style="height:110px;">
+			<option value="1" selected>Quản trị cấp cao</option>
+			<option value="2">Quản trị viên</option>
+			<option value="3">Biên tập viên</option>
+			<option value="4">Tác giả</option>
+			<option value="5">Cộng tác viên</option>
+		</select>
+		</div>
+		<div class="rightselect">
 			<label for="" class="">Trạng thái</label> <select multiple
 				class="form-control" name="active" style="height:50px;">
 				<option value="1" <?php if($data['active'] == 1) echo "selected"; ?>>Kích hoạt</option>

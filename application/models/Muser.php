@@ -35,9 +35,12 @@ class Muser extends CI_Model {
 			return TRUE;
 		}
 	}
-	public function listAllUser($all, $start) {
+	public function listAllUser($all, $start, $order="desc", $active="") {
 		// Hiển thị toàn bộ thành viên.
-		$this->db->order_by("id","desc");
+		if($active!= ""){
+			$this->db->where("active", $active);
+		}
+		$this->db->order_by("id",$order);
 		$this->db->limit ( $all, $start );
 		return $this->db->get ( $this->_table )->result_array ();
 	}

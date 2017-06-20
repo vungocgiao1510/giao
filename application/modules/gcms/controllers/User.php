@@ -41,28 +41,20 @@ class User extends AdminController {
 		$start = ($current_page - 1) * $config ['per_page'];
 		// echo $start;
 		// echo $config ['per_page'];
-		if ($this->input->post ( "locds" )) {
-// 			echo $this->input->post ( "locds" );
-			if ($this->input->post ( "locds" ) == "desc") {
-				// Lọc theo danh sách mới nhất.
-				$this->_data ['data'] = $this->Muser->listAllUser ( $config ['per_page'], $start );
-			} elseif ($this->input->post ( "locds" ) == "desc") {
-				$this->_data ['data'] = $this->Muser->listAllUser ( $config ['per_page'], $start );
-			} elseif ($this->input->post ( "locds" ) == "asc") {
-				// Lọc theo danh sách cũ nhất.
-				$this->_data ['data'] = $this->Muser->listAllUserASC ( $config ['per_page'], $start );
-			} elseif ($this->input->post ( "locds" ) == "1") {
-				// Lọc theo danh sách đã kích hoạt.
-				$this->_data ['data'] = $this->Muser->listAllUserActive ($config ['per_page'], $start );
-			}elseif ($this->input->post ( "locds" ) == "2") {
-				// Lọc theo danh sách đã chưa kích hoạt.
-				$this->_data ['data'] = $this->Muser->listAllUserDeactive($config ['per_page'], $start );
-			}
-		} else {
-			// Nếu không tồn tại biến post nào thì tự động hiểu và show ra những bản ghi mới nhất.
+		if($this->input->post("locds")){
+			$ses_locds = array("locds" => $this->input->post("locds"));
+			$this->session->set_userdata($ses_locds);
+		}
+		$locds = $this->session->userdata("locds");
+		$this->_data['locds'] = $locds;
+		if($locds == "desc" || $locds == "asc"){
+			$this->_data ['data'] = $this->Muser->listAllUser ( $config ['per_page'], $start, $locds );
+		} elseif ($locds == "1" || $locds == "2") {
+			$this->_data ['data'] = $this->Muser->listAllUser ( $config ['per_page'], $start,"", $locds );
+		}else {
 			$this->_data ['data'] = $this->Muser->listAllUser ( $config ['per_page'], $start );
 		}
-// 		 echo $this->db->last_query();
+// 		echo $this->db->last_query();
 		$this->load->view ( $this->_data ['path'], $this->_data );
 	}
 	/*
