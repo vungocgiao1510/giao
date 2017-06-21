@@ -1,6 +1,7 @@
 <?php
 class Muser extends CI_Model {
 	protected $_table = "users";
+	protected $_table2 = "user_permissions";
 	public function __construct() {
 		parent::__construct ();
 	}
@@ -78,5 +79,8 @@ class Muser extends CI_Model {
 		// Xóa thành viên
 		$this->db->where ( "id", $id );
 		$this->db->delete ( $this->_table );
+	}
+	public function addusergroup($insert){
+		$this->db->insert ( $this->_table2, $insert );
 	}
 }

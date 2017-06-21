@@ -40,45 +40,6 @@ if (validation_errors () != "") {
 			</div>
 		</div>
 		<hr>
-		<div style="margin-bottom: 20px;">
-			<label>Quản lý thành viên</label>
-			<div class="checkbox">
-				<label> <input type="checkbox" value="user/index"> Danh sách thành
-					viên &nbsp;&nbsp;
-				</label> <label><input type="checkbox" value="user/add"> Thêm mới
-					&nbsp;&nbsp;</label> <label><input type="checkbox"
-					value="user/edit"> Sửa thành viên &nbsp;&nbsp;</label>
-			</div>
-			<hr>
-			<label>Quản lý chuyên mục</label>
-			<div class="checkbox">
-
-				<label> <input type="checkbox" value="user/index"> Tất cả chuyên mục
-					&nbsp;&nbsp;
-				</label> <label><input type="checkbox" value="user/add"> Chuyên mục
-					mới &nbsp;&nbsp;</label> <label><input type="checkbox"
-					value="user/edit"> Sửa chuyên mục &nbsp;&nbsp;</label>
-			</div>
-			<hr>
-			<label>Quản lý bài viết</label>
-			<div class="checkbox">
-
-				<label> <input type="checkbox" value="user/index"> Tất cả bài viết
-					&nbsp;&nbsp;
-				</label> <label><input type="checkbox" value="user/add"> Bài viết
-					mới &nbsp;&nbsp;</label> <label><input type="checkbox"
-					value="user/edit"> Sửa bài viết &nbsp;&nbsp;</label>
-			</div>
-			<hr>
-			<label>Quản lý sản phẩm</label>
-			<div class="checkbox">
-
-				<label> <input type="checkbox" value="user/index"> Tất cả sản phẩm
-					&nbsp;&nbsp;
-				</label> <label><input type="checkbox" value="user/add"> Sản phẩm mới &nbsp;&nbsp;</label> <label><input type="checkbox"
-					value="user/edit"> Sửa sản phẩm &nbsp;&nbsp;</label>
-			</div>
-		</div>
 		<div class="form-group">
 			<div class="col-sm-offset-3 col-sm-11">
 				<button type="submit" class="btn btn-primary" name="ok">Đăng ký</button>

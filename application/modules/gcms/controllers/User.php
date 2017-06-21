@@ -43,8 +43,8 @@ class User extends AdminController {
 		$this->_data ['pagination'] = $this->pagination->create_links ();
 		$current_page = ($this->input->get("per_page")) ? $this->input->get("per_page") : 1;
 		$start = ($current_page - 1) * $config ['per_page'];
-		echo $start;
-		echo $config ['per_page'];
+// 		echo $start;
+// 		echo $config ['per_page'];
 		if($this->input->post("locds")){
 			$ses_locds = array("locds" => $this->input->post("locds"));
 			$this->session->set_userdata($ses_locds);
@@ -65,7 +65,7 @@ class User extends AdminController {
 		} else {
 			$this->_data ['data'] = $this->Muser->listAllUser ( $config['per_page'], $start );
 		}
-		echo $this->db->last_query();
+// 		echo $this->db->last_query();
 		$this->load->view ( $this->_data ['path'], $this->_data );
 	}
 	/*
@@ -217,5 +217,92 @@ class User extends AdminController {
 			$this->session->set_flashdata ( "flash_error", "Bạn chưa chọn thành viên cần xóa." );
 			redirect ( base_url () . "gcms/user/index" );
 		}
+	}
+	
+	// User group
+	
+	public function usergroup(){
+		
+	}
+	public function add_usergroup(){
+		$this->_data['checkboxgroup'] = array(
+				"Quản lý bài viết" => array(
+						"news/index" => array("Danh sách bài viếtc"),
+						"news/add" => array("Thêm mới bài viết"),
+						"news/edit" => array("Sửa bài viết"),
+				),
+				"Quản lý sản phẩm" => array(
+						"products/index" => array("Danh sách sản phẩm"),
+						"products/add" => array("Thêm mới sản phẩm"),
+						"products/edit" => array("Sửa sản phẩm"),
+				),
+				"Quản lý đơn hàng" => array(
+						"order/index" => array("Tất cả đơn hàng"),
+						"order/deactive" => array("Đơn hàng chưa xử lý"),
+						"order/active" => array("Đơn hàng đã xử lý"),
+						"order/view" => array("Xem đơn hàng"),
+				),
+				"Quản lý chuyên mục" => array(
+						"categorie/index" => array("Danh sách chuyên mục"),
+						"categorie/add" => array("Thêm mới chuyên mục"),
+						"categorie/edit" => array("Sửa chuyên mục"),
+				),
+				"Giao diện website" => array(
+						"designed/index" => array("Giao diện website"),
+				),
+				"Quản lý thành viên" => array(
+						"user/index" => array("Danh sách thành viên"),
+						"user/add" => array("Thêm mới thành viên"),
+						"user/edit" => array("Sửa thành viên"),
+						"user/usergroup" => array("Nhóm thành viên"),
+						"user/add_usergroup" => array("Thêm nhóm thành viên"),
+						"user/edit_usergroup" => array("Sửa nhóm thành viên"),
+				),
+				"Hòm thư liên hệ" => array(
+						"mail/index" => array("Danh sách liên hệ"),
+						"mail/view" => array("Trả lời thư"),
+				),
+				"Bình luận phản hồi" => array(
+						"comment/index" => array("Danh sách bình luận"),
+						"comment/view" => array("Trả lời bình luận"),
+				),
+				"Cài đặt hệ thống" => array(
+						"setting/index" => array("Cài đặt hệ thống"),
+				),
+		);
+		$this->_data ['error'] = "";
+		$this->_data ['title'] = "Thêm mới nhóm thành viên";
+		$this->_data ['loadPage'] = "user/addusergroup_view";
+		// Validation Form khi nhập sai
+		$this->form_validation->set_message ( 'required', '{field} không được để trống.' );
+		$this->form_validation->set_message ( 'min_length', '{field} phải nhiều hơn 5 ký tự.' );
+		$this->form_validation->set_message ( 'max_length', '{field} phải nhỏ hơn 14 ký tự.' );
+		$this->form_validation->set_message ( 'matches', '{field} không đúng, vui lòng nhập lại.' );
+		$this->form_validation->set_rules ( 'username', 'Tài khoản', 'required|min_length[5]|max_length[14]|callback_check_user' );
+		$this->form_validation->set_rules ( 'password', 'Mật khẩu', 'required|min_length[5]|max_length[14]' );
+		$this->form_validation->set_rules ( 'password2', 'Xác nhận mật khẩu', 'trim|required|matches[password]|min_length[5]|max_length[14]' );
+		if ($this->form_validation->run () == TRUE) {
+			// Mảng chứa dữ liệu cần insert
+			$data_insert = array (
+					"username" => $this->input->post ( "username" ),
+					"password" => $this->input->post ( "password" ),
+					"level" => $this->input->post ( "level" ),
+					"created" => date ( "Y-m-d" ),
+					"active" => "1",
+			);
+			// Insert dữ liệu
+// 			$this->Muser->insertUser ( $data_insert );
+			// Flash mess thông báo insert thành công
+			$this->session->set_flashdata ( "flash_mess", "Hoàn tất thủ tục thêm nhóm thành viên." );
+			redirect ( base_url () . "gcms/user/usergroup" );
+		}
+		// 		echo $this->db->last_query();
+		$this->load->view ( $this->_data ['path'], $this->_data );
+	}
+	public function edit_usergroup(){
+		
+	}
+	public function del_usergroup(){
+		
 	}
 }

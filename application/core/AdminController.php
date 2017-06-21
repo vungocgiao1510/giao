@@ -131,11 +131,11 @@ class AdminController extends MY_Controller {
 								),
 								array (
 										"parentname" => "Nhóm thành viên",
-										"parenturl" => base_url () . "gcms/user/add",
+										"parenturl" => base_url () . "gcms/user/usergroup",
 								),
 								array (
 										"parentname" => "Tạo nhóm thành viên",
-										"parenturl" => base_url () . "gcms/user/add",
+										"parenturl" => base_url () . "gcms/user/add_usergroup",
 								),
 								array (
 										"parentname" => "Hồ sơ của bạn",
