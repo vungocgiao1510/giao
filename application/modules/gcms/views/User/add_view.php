@@ -10,11 +10,18 @@ if (validation_errors () != "") {
 	echo '</div>';
 }
 ?>
-			<div class="form-group">
+		<div class="form-group">
 			<label for="username" class="col-sm-3 control-label">Tài khoản</label>
 			<div class="col-sm-9">
 				<input type="text" class="form-control" id="" name="username"
 					placeholder="Tài khoản">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="username" class="col-sm-3 control-label">Địa chỉ Email</label>
+			<div class="col-sm-9">
+				<input type="text" class="form-control" id="" name="email"
+					placeholder="Địa chỉ Email">
 			</div>
 		</div>
 		<div class="form-group">
@@ -32,6 +39,46 @@ if (validation_errors () != "") {
 					placeholder="Xác nhận mật khẩu">
 			</div>
 		</div>
+		<hr>
+		<div style="margin-bottom: 20px;">
+			<label>Quản lý thành viên</label>
+			<div class="checkbox">
+				<label> <input type="checkbox" value="user/index"> Danh sách thành
+					viên &nbsp;&nbsp;
+				</label> <label><input type="checkbox" value="user/add"> Thêm mới
+					&nbsp;&nbsp;</label> <label><input type="checkbox"
+					value="user/edit"> Sửa thành viên &nbsp;&nbsp;</label>
+			</div>
+			<hr>
+			<label>Quản lý chuyên mục</label>
+			<div class="checkbox">
+
+				<label> <input type="checkbox" value="user/index"> Tất cả chuyên mục
+					&nbsp;&nbsp;
+				</label> <label><input type="checkbox" value="user/add"> Chuyên mục
+					mới &nbsp;&nbsp;</label> <label><input type="checkbox"
+					value="user/edit"> Sửa chuyên mục &nbsp;&nbsp;</label>
+			</div>
+			<hr>
+			<label>Quản lý bài viết</label>
+			<div class="checkbox">
+
+				<label> <input type="checkbox" value="user/index"> Tất cả bài viết
+					&nbsp;&nbsp;
+				</label> <label><input type="checkbox" value="user/add"> Bài viết
+					mới &nbsp;&nbsp;</label> <label><input type="checkbox"
+					value="user/edit"> Sửa bài viết &nbsp;&nbsp;</label>
+			</div>
+			<hr>
+			<label>Quản lý sản phẩm</label>
+			<div class="checkbox">
+
+				<label> <input type="checkbox" value="user/index"> Tất cả sản phẩm
+					&nbsp;&nbsp;
+				</label> <label><input type="checkbox" value="user/add"> Sản phẩm mới &nbsp;&nbsp;</label> <label><input type="checkbox"
+					value="user/edit"> Sửa sản phẩm &nbsp;&nbsp;</label>
+			</div>
+		</div>
 		<div class="form-group">
 			<div class="col-sm-offset-3 col-sm-11">
 				<button type="submit" class="btn btn-primary" name="ok">Đăng ký</button>
@@ -42,21 +89,21 @@ if (validation_errors () != "") {
 	</div>
 	<div class="col-md-4">
 		<div class="rightselect">
-		<label for="" class="">Cấp độ</label> <select multiple
-			class="form-control" name="level" style="height:50px;">
-			<option value="2" selected>Member</option>
-			<option value="1">Administrator</option>
-		</select>
+			<label for="" class="">Cấp độ</label> <select multiple
+				class="form-control" name="level" style="height: 50px;">
+				<option value="1">Administrator</option>
+				<option value="2" selected>Member</option>
+			</select>
 		</div>
 		<div class="rightselect">
-		<label for="" class="">Chức vụ</label> <select multiple
-			class="form-control" name="role" style="height:110px;">
-			<option value="1" selected>Quản trị cấp cao</option>
-			<option value="2">Quản trị viên</option>
-			<option value="3">Biên tập viên</option>
-			<option value="4">Tác giả</option>
-			<option value="5">Cộng tác viên</option>
-		</select>
+			<label for="" class="">Chức vụ</label> <select multiple
+				class="form-control" name="role" style="height: 110px;">
+				<option value="1">Quản trị cấp cao</option>
+				<option value="2">Quản trị viên</option>
+				<option value="3">Biên tập viên</option>
+				<option value="4">Tác giả</option>
+				<option value="5" selected>Cộng tác viên</option>
+			</select>
 		</div>
 	</div>
 </form>

@@ -17,6 +17,7 @@ class Muser extends CI_Model {
 	}
 	public function insertUser($insert) {
 		// Thêm thành viên
+// 		$this->db->join('user_role','user_role.id=users.role_id');
 		$this->db->insert ( $this->_table, $insert );
 	}
 	public function checkUser($user, $id = "") {

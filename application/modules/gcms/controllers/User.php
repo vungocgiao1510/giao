@@ -97,7 +97,7 @@ class User extends AdminController {
 					"password" => $this->input->post ( "password" ),
 					"level" => $this->input->post ( "level" ),
 					"created" => date ( "Y-m-d" ),
-					"active" => "1" 
+					"active" => "1",
 			);
 			// Insert dữ liệu
 			$this->Muser->insertUser ( $data_insert );
@@ -105,6 +105,7 @@ class User extends AdminController {
 			$this->session->set_flashdata ( "flash_mess", "Hoàn tất thủ tục thêm thành viên." );
 			redirect ( base_url () . "gcms/user/index" );
 		}
+// 		echo $this->db->last_query();
 		$this->load->view ( $this->_data ['path'], $this->_data );
 	}
 	public function myprofile() {

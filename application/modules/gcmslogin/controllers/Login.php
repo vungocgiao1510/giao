@@ -19,6 +19,7 @@ class Login extends LoginController {
 				$ses_user = array (
 						'id' => $data ['id'],
 						'username' => $data ['username'],
+						'email' => $data['email'],
 						'level' => $data ['level'],
 						'lang' => $this->input->post ( "lang" ) 
 				);
