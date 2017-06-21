@@ -41,10 +41,10 @@ class User extends AdminController {
 		// Truyền $config vào initialize.
 		$this->pagination->initialize ( $config );
 		$this->_data ['pagination'] = $this->pagination->create_links ();
-		$current_page = ($this->uri->segment ( 4 )) ? $this->uri->segment ( 4 ) : 1;
+		$current_page = ($this->input->get("per_page")) ? $this->input->get("per_page") : 1;
 		$start = ($current_page - 1) * $config ['per_page'];
-		// echo $start;
-// 		echo $config ['per_page'];
+		echo $start;
+		echo $config ['per_page'];
 		if($this->input->post("locds")){
 			$ses_locds = array("locds" => $this->input->post("locds"));
 			$this->session->set_userdata($ses_locds);
@@ -65,7 +65,7 @@ class User extends AdminController {
 		} else {
 			$this->_data ['data'] = $this->Muser->listAllUser ( $config['per_page'], $start );
 		}
-// 		echo $this->db->last_query();
+		echo $this->db->last_query();
 		$this->load->view ( $this->_data ['path'], $this->_data );
 	}
 	/*

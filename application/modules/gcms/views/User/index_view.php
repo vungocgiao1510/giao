@@ -9,7 +9,7 @@ if ($error != "") {
 ?>
 <div class="hethong">
 	<div class="add">
-		<a href="<?php echo base_url()."gcms/user/add"; ?>" class="btn btn-primary">Thêm mới</a>
+		<a href="<?php echo base_url()."gcms/user/add"; ?>" class="btn btn-primary active">Thêm mới</a>
 	</div>
 	<div class="setting">
 		<form action="" method="POST">
@@ -19,7 +19,7 @@ if ($error != "") {
 					<option value="asc" <?php if($locds== "asc") echo "selected"; ?>>Cũ nhất</option>
 					<option value="1" <?php if($locds== "1") echo "selected"; ?>>Đã kích hoạt</option>
 					<option value="2" <?php if($locds== "2") echo "selected"; ?>>Chưa kích hoạt</option>
-				</select> <input type="submit" name="loc" value="Lọc" class="btn btn-primary" />
+				</select> <input type="submit" name="loc" value="Lọc" class="btn btn-primary active" />
 			</div>
 		</form>
 	</div>
@@ -27,7 +27,7 @@ if ($error != "") {
 	<form action="" method="GET">
 			<div class="form-group">
 				<input type="text" class="form-control searchds" name="keyword" id="keyword" placeholder="Nhập tên thành viên cần tìm." required>
-				<input type="submit" id="searchform" value="Tìm kiếm" class="btn btn-primary" />
+				<input type="submit" id="searchform" value="Tìm kiếm" class="btn btn-primary active" />
 			</div>	
 	</form>
 	</div>
@@ -61,7 +61,7 @@ if ($error != "") {
 				echo "<td><input type='checkbox' id='box_$val[id]' name='checkAll[]' value='$val[id]' class='checkSingle'></td>";
 			}
 			echo "<td>$stt</td>";
-			echo "<td>$val[username]</td>";
+			echo "<td><a class='editname' href='" . base_url () . "gcms/user/edit/$val[id]'>$val[username]</a></td>";
 			if ($val ['level'] == 1) {
 				echo "<td><font color='red'>Administrator</font></td>";
 			} else {
@@ -70,12 +70,12 @@ if ($error != "") {
 			echo "<td>" . date ( "d/m/Y", strtotime ( $val ["created"] ) ) . "</td>";
 			echo "<td>" . date ( "d/m/Y", strtotime ( $val ["updated"] ) ) . "</td>";
 			if ($val ['active'] == 1) {
-				echo "<td><a href='#' class='btn btn-success'>Đã kích hoạt</a></td>";
+				echo "<td><a class='btn btn-info active'>Kích hoạt</a></td>";
 			} else {
-				echo "<td><a href='#' class='btn btn-info'>Chưa kích hoạt</a></td>";
+				echo "<td><a class='btn btn-danger active'>Đã khóa</a></td>";
 			}
-			echo "<td><a href='" . base_url () . "gcms/user/edit/$val[id]'>Sửa</a></td>";
-			echo "<td><a href='" . base_url () . "gcms/user/delete/$val[id]'>Xóa</a></td>";
+			echo "<td><a href='" . base_url () . "gcms/user/edit/$val[id]'><img src='".base_url()."public/gcms/img/edit.png' alt='Edit' title='Edit' /></a></td>";
+			echo "<td><a href='" . base_url () . "gcms/user/delete/$val[id]'><img src='".base_url()."public/gcms/img/garbage.png' alt='Delete' title='Delete' /></a></td>";
 			echo "</tr>";
 		}
 	} else {
@@ -101,7 +101,7 @@ if ($error != "") {
 			</div>
 </div>
 <div class="col-md-4 npd" align="right">
-<button type="submit" name="deletecb" class="btn btn-danger">Xóa</button>
+<button type="submit" name="deletecb" class='btn btn-default'><img src='<?php echo base_url()  ?>public/gcms/img/garbage.png' alt='Delete All' title='Delete All' /></button>
 </form>
 </div>
 </div>

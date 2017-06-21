@@ -2,8 +2,28 @@ body{
 	font-family: 'Roboto', sans-serif;
 	color:#777;
 }
+.active{
+	border-radius:0px;
+}
+#result a.editname{
+	text-decoration: none;
+	color:#777;
+}
+#result a.editname:hover{
+	color:#a94442;
+}
 .form-horizontal .control-label{
 	text-align: left;
+}
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover
+{
+	background-color:#286090;
+	border-color: #286090;
+}
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th
+{
+	vertical-align: baseline;
+	text-align:center;
 }
 .cls{
 	clear:left;
