@@ -43,8 +43,8 @@ class User extends AdminController {
 		$this->_data ['pagination'] = $this->pagination->create_links ();
 		$current_page = ($this->input->get("per_page")) ? $this->input->get("per_page") : 1;
 		$start = ($current_page - 1) * $config ['per_page'];
-// 		echo $start;
-// 		echo $config ['per_page'];
+		echo $start;
+		echo $config ['per_page'];
 		if($this->input->post("locds")){
 			$ses_locds = array("locds" => $this->input->post("locds"));
 			$this->session->set_userdata($ses_locds);
@@ -65,7 +65,7 @@ class User extends AdminController {
 		} else {
 			$this->_data ['data'] = $this->Muser->listAllUser ( $config['per_page'], $start );
 		}
-// 		echo $this->db->last_query();
+		echo $this->db->last_query();
 		$this->load->view ( $this->_data ['path'], $this->_data );
 	}
 	/*
@@ -277,10 +277,7 @@ class User extends AdminController {
 		$this->form_validation->set_message ( 'required', '{field} không được để trống.' );
 		$this->form_validation->set_message ( 'min_length', '{field} phải nhiều hơn 5 ký tự.' );
 		$this->form_validation->set_message ( 'max_length', '{field} phải nhỏ hơn 14 ký tự.' );
-		$this->form_validation->set_message ( 'matches', '{field} không đúng, vui lòng nhập lại.' );
-		$this->form_validation->set_rules ( 'username', 'Tài khoản', 'required|min_length[5]|max_length[14]|callback_check_user' );
-		$this->form_validation->set_rules ( 'password', 'Mật khẩu', 'required|min_length[5]|max_length[14]' );
-		$this->form_validation->set_rules ( 'password2', 'Xác nhận mật khẩu', 'trim|required|matches[password]|min_length[5]|max_length[14]' );
+		$this->form_validation->set_rules ( 'userrgoup', 'Nhóm', 'required|min_length[5]|max_length[14]|callback_check_user' );
 		if ($this->form_validation->run () == TRUE) {
 			// Mảng chứa dữ liệu cần insert
 			$data_insert = array (
