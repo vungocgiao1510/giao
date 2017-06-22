@@ -93,7 +93,7 @@ class User extends AdminController {
 		$this->form_validation->set_rules ( 'username', 'Tài khoản', 'required|min_length[5]|max_length[14]|callback_check_user' );
 		$this->form_validation->set_rules ( 'password', 'Mật khẩu', 'required|min_length[5]|max_length[14]' );
 		$this->form_validation->set_rules ( 'password2', 'Xác nhận mật khẩu', 'trim|required|matches[password]|min_length[5]|max_length[14]' );
-		$this->form_validation->set_rules ( 'group', 'Nhóm', 'required' );
+// 		$this->form_validation->set_rules ( 'group', 'Nhóm', 'required' );
 		if ($this->form_validation->run () == TRUE) {
 			// Mảng chứa dữ liệu cần insert
 			$data_insert = array (
@@ -393,7 +393,6 @@ class User extends AdminController {
 		$this->form_validation->set_message ( 'required', '{field} không được để trống.' );
 		$this->form_validation->set_message ( 'min_length', '{field} phải nhiều hơn 5 ký tự.' );
 		$this->form_validation->set_message ( 'max_length', '{field} phải nhỏ hơn 14 ký tự.' );
-		$this->form_validation->set_rules ( 'usergroup', 'Nhóm', 'required|min_length[5]|max_length[14]|callback_check_user' );
 		if ($this->form_validation->run () == TRUE) {
 			// Mảng chứa dữ liệu cần insert
 			$permission = json_encode ( $this->input->post ( "cbpermissions" ) );

@@ -11,6 +11,11 @@ class AdminController extends MY_Controller {
 		if (!$this->session->userdata ['username'] && $this->uri->segment(2) != "login") {
 			redirect ( base_url () . $mod );
 		}
+		$this->load->helper("Permissions");
+		$permissions = $this->session->userdata("permissions");
+		$key = $this->uri->segment(2)."/".$this->uri->segment(3);
+		$level = $this->session->userdata("level");
+		checkPermission($permissions,$key,$level);
 		// Kiểm tra ngôn ngữ và tự động require đến folder languages.
 		if ($this->session->userdata ['lang'] == "vn") {
 			$this->lang->load ( "gcms", 'vietnamese' );

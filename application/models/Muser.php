@@ -55,6 +55,7 @@ class Muser extends CI_Model {
 		$this->db->limit ( $all, $start );
 		$this->db->order_by("id",$order);
 		$this->db->like('username',$keyword);
+		$this->db->join("user_permissions","user_permissions.group_id = users.group_id");
 		$query = $this->db->get($this->_table);
 		return $query->result_array();
 	}

@@ -55,7 +55,7 @@ if (validation_errors () != "") {
 				<?php 
 				if($group_user){
 					foreach($group_user as $value){
-						echo "<option value='$value[id]'>$value[usergroup]</option>";
+						echo "<option value='$value[group_id]'>$value[usergroup]</option>";
 					}
 				}
 				?>
