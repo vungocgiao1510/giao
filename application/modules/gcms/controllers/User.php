@@ -354,6 +354,12 @@ class User extends AdminController {
 						"user/edit" => array (
 								"Sửa thành viên" 
 						),
+						"user/delete" => array (
+								"Xóa thành viên"
+						),
+						"user/deletecb" => array (
+								"Chọn thành viên xóa"
+						),
 						"user/usergroup" => array (
 								"Nhóm thành viên" 
 						),
@@ -362,6 +368,12 @@ class User extends AdminController {
 						),
 						"user/edit_usergroup" => array (
 								"Sửa nhóm thành viên" 
+						) ,
+						"user/del_usergroup" => array (
+								"Xóa nhóm thành viên"
+						) ,
+						"user/deletecbgroup" => array (
+								"Chọn nhóm xóa"
 						) 
 				),
 				"Hòm thư liên hệ" => array (
@@ -393,6 +405,7 @@ class User extends AdminController {
 		$this->form_validation->set_message ( 'required', '{field} không được để trống.' );
 		$this->form_validation->set_message ( 'min_length', '{field} phải nhiều hơn 5 ký tự.' );
 		$this->form_validation->set_message ( 'max_length', '{field} phải nhỏ hơn 14 ký tự.' );
+		$this->form_validation->set_rules ( 'usergroup', 'Tài khoản', 'required|min_length[5]|max_length[14]' );
 		if ($this->form_validation->run () == TRUE) {
 			// Mảng chứa dữ liệu cần insert
 			$permission = json_encode ( $this->input->post ( "cbpermissions" ) );

@@ -27,7 +27,7 @@ if (validation_errors () != "") {
 		<?php 
 		if($checkboxgroup){
 			foreach($checkboxgroup as $key => $value){
-				echo '<div class="col-md-4" style="margin-bottom: 20px; height:200px;">';
+				echo '<div class="col-md-4" style="margin-bottom: 20px; height:300px;">';
 				echo "<hr>";
 				echo "<label>$key</label>";
 				foreach($value as $key2 => $name)
