@@ -13,16 +13,17 @@ if (validation_errors () != "") {
 		<div class="form-group">
 			<label for="username" class="col-sm-3 control-label">Tên nhóm</label>
 			<div class="col-sm-9">
-				<input type="text" class="form-control" id="" name="groupuser"
+				<input type="text" class="form-control" id="" name="usergroup"
 					placeholder="Tên nhóm">
 			</div>
 		</div>
 		<div class="form-group">
 			<label for="username" class="col-sm-3 control-label">Nội dung</label>
 			<div class="col-sm-9">
-				<textarea class="form-control" rows="5" placeholder="Nội dung"></textarea>
+				<textarea class="form-control" rows="5" placeholder="Nội dung" name="description"></textarea>
 			</div>
 		</div>
+		
 		<?php 
 		if($checkboxgroup){
 			foreach($checkboxgroup as $key => $value){
@@ -32,7 +33,7 @@ if (validation_errors () != "") {
 				foreach($value as $key2 => $name)
 				{
 					echo '<div class="checkbox">
-					<label> <input type="checkbox" value="'.$key2.'"> '.$name[0].' &nbsp;&nbsp; </label></div>';
+					<label> <input type="checkbox" name="cbpermissions[]" value="'.$key2.'"> '.$name[0].' &nbsp;&nbsp; </label></div>';
 				}
 				echo '</div>';
 			}
@@ -41,7 +42,7 @@ if (validation_errors () != "") {
 
 		<div class="form-group">
 			<div class="col-sm-offset-3 col-sm-11">
-				<button type="submit" class="btn btn-primary" name="ok">Đăng ký</button>
+				<button type="submit" class="btn btn-primary" name="ok">Tạo nhóm</button>
 				<button type="reset" class="btn btn-primary" name="rs">Nhập lại</button>
 			</div>
 		</div>
@@ -51,8 +52,8 @@ if (validation_errors () != "") {
 		<div class="rightselect">
 			<label for="" class="">Cấp độ</label> <select multiple
 				class="form-control" name="level" style="height: 50px;">
-				<option value="1">Administrator</option>
-				<option value="2" selected>Member</option>
+				<option value="1" selected>Administrator</option>
+				<option value="2">Member</option>
 			</select>
 		</div>
 	</div>

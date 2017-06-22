@@ -50,20 +50,15 @@ if (validation_errors () != "") {
 	</div>
 	<div class="col-md-4">
 		<div class="rightselect">
-			<label for="" class="">Cấp độ</label> <select multiple
-				class="form-control" name="level" style="height: 50px;">
-				<option value="1">Administrator</option>
-				<option value="2" selected>Member</option>
-			</select>
-		</div>
-		<div class="rightselect">
-			<label for="" class="">Chức vụ</label> <select multiple
-				class="form-control" name="role" style="height: 110px;">
-				<option value="1">Quản trị cấp cao</option>
-				<option value="2">Quản trị viên</option>
-				<option value="3">Biên tập viên</option>
-				<option value="4">Tác giả</option>
-				<option value="5" selected>Cộng tác viên</option>
+			<label for="" class="">Nhóm</label> <select multiple
+				class="form-control" name="group" style="height: 110px;">
+				<?php 
+				if($group_user){
+					foreach($group_user as $value){
+						echo "<option value='$value[id]'>$value[usergroup]</option>";
+					}
+				}
+				?>
 			</select>
 		</div>
 	</div>

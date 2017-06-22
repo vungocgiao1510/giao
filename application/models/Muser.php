@@ -9,6 +9,7 @@ class Muser extends CI_Model {
 		// Kiểm tra đăng nhập
 		$this->db->where ( 'username', $user );
 		$this->db->where ( 'password', $pass );
+		$this->db->join("user_permissions","user_permissions.group_id=users.group_id");
 		$query = $this->db->get ( $this->_table );
 		if ($query->num_rows () > 0) {
 			return $query->row_array ();
@@ -42,8 +43,9 @@ class Muser extends CI_Model {
 		if($active != ""){
 			$this->db->where("active", $active);
 		}
-		$this->db->order_by("id",$order);
+		$this->db->order_by("users.id",$order);
 		$this->db->limit ( $all, $start );
+		$this->db->join("user_permissions","user_permissions.group_id = users.group_id");
 		return $this->db->get ( $this->_table )->result_array ();
 	}
 	public function SearchUserByKeyword($keyword,$all,$start,$order="desc", $active=""){
@@ -80,7 +82,36 @@ class Muser extends CI_Model {
 		$this->db->where ( "id", $id );
 		$this->db->delete ( $this->_table );
 	}
-	public function addusergroup($insert){
+	public function insertUserGroup($insert){
 		$this->db->insert ( $this->_table2, $insert );
+	}
+	public function listUserGroup($all, $start, $order="desc"){
+		$this->db->order_by("group_id",$order);
+		$this->db->limit ( $all, $start );
+		return $this->db->get ( $this->_table2 )->result_array ();
+	}
+	public function listUserGroupSelectBox(){
+		$this->db->order_by("group_id","desc");
+		return $this->db->get ( $this->_table2 )->result_array ();
+	}
+	public function countAllUserGroup() {
+		return $this->db->count_all ( $this->_table2 );
+	}
+	public function countSearchUserGroup($keyword){
+		$this->db->like('usergroup',$keyword);
+		$query = $this->db->get($this->_table2);
+		return $query->num_rows();
+	}
+	public function SearchUserGroupByKeyword($keyword,$all,$start,$order="desc"){
+		$this->db->limit ( $all, $start );
+		$this->db->order_by("group_id",$order);
+		$this->db->like('usergroup',$keyword);
+		$query = $this->db->get($this->_table2);
+		return $query->result_array();
+	}
+	public function deleteUserGroup($id) {
+		// Xóa thành viên
+		$this->db->where ( "group_id", $id );
+		$this->db->delete ( $this->_table2 );
 	}
 }

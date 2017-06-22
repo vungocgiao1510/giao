@@ -8,7 +8,7 @@ class AdminController extends MY_Controller {
 		// $this->_data['path'] là đường dẫn đến template chính bên views ngoài.
 		$this->_data ['path'] = "$mod/template";
 		// Kiểm tra xem session level có đúng là admin hay không, nếu không thì tự động đẩy ra ngoài đăng nhập.
-		if ($this->session->userdata ['level'] != 1 && $this->uri->segment(2) != "login") {
+		if (!$this->session->userdata ['username'] && $this->uri->segment(2) != "login") {
 			redirect ( base_url () . $mod );
 		}
 		// Kiểm tra ngôn ngữ và tự động require đến folder languages.

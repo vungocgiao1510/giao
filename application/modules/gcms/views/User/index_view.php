@@ -42,7 +42,7 @@ if ($error != "") {
 			<th><input type="checkbox" id="checkedAll" name="checkedAll"></th>
 			<th>STT</th>
 			<th>Thành viên</th>
-			<th>Cấp độ</th>
+			<th>Nhóm</th>
 			<th>Ngày tạo</th>
 			<th>Ngày sửa</th>
 			<th>Trạng thái</th>
@@ -62,11 +62,7 @@ if ($error != "") {
 			}
 			echo "<td>$stt</td>";
 			echo "<td><a class='editname' href='" . base_url () . "gcms/user/edit/$val[id]'>$val[username]</a></td>";
-			if ($val ['level'] == 1) {
-				echo "<td><font color='red'>Administrator</font></td>";
-			} else {
-				echo "<td>Member</td>";
-			}
+			echo "<td><font color='red'>$val[usergroup]</font></td>";
 			echo "<td>" . date ( "d/m/Y", strtotime ( $val ["created"] ) ) . "</td>";
 			echo "<td>" . date ( "d/m/Y", strtotime ( $val ["updated"] ) ) . "</td>";
 			if ($val ['active'] == 1) {
@@ -75,7 +71,7 @@ if ($error != "") {
 				echo "<td><a class='btn btn-danger active'>Đã khóa</a></td>";
 			}
 			echo "<td><a href='" . base_url () . "gcms/user/edit/$val[id]'><img src='".base_url()."public/gcms/img/edit.png' alt='Edit' title='Edit' /></a></td>";
-			echo "<td><a href='" . base_url () . "gcms/user/delete/$val[id]'><img src='".base_url()."public/gcms/img/garbage.png' alt='Delete' title='Delete' /></a></td>";
+			echo "<td><a href='" . base_url () . "gcms/user/delete/$val[id]' onclick='return confirm(\"Bán có muốn xóa bản ghi này không?\");'><img src='".base_url()."public/gcms/img/garbage.png' alt='Delete' title='Delete' /></a></td>";
 			echo "</tr>";
 		}
 	} else {

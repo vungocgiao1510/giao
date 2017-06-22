@@ -20,7 +20,10 @@ class Login extends LoginController {
 						'id' => $data ['id'],
 						'username' => $data ['username'],
 						'email' => $data['email'],
-						'level' => $data ['level'],
+						'usergroup' => $data['usergroup'],
+						'description' => $data['description'],
+						'level' => $data['level'],
+						'permissions' => $data['permissions'],
 						'lang' => $this->input->post ( "lang" ) 
 				);
 				$this->session->set_userdata ( $ses_user );

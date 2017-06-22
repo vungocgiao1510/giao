@@ -21,6 +21,13 @@ if (validation_errors () != "") {
 			</div>
 		</div>
 		<div class="form-group">
+			<label for="username" class="col-sm-3 control-label">Địa chỉ Email</label>
+			<div class="col-sm-9">
+				<input type="text" class="form-control" id="" name="email"
+					placeholder="Địa chỉ Email">
+			</div>
+		</div>
+		<div class="form-group">
 			<label for="password" class="col-sm-3 control-label">Mật khẩu</label>
 			<div class="col-sm-9">
 				<input type="password" class="form-control" id="" name="password"
@@ -45,21 +52,20 @@ if (validation_errors () != "") {
 	</div>
 	<div class="col-md-4">
 		<div class="rightselect">
-			<label for="" class="">Cấp độ</label> <select multiple
-				class="form-control" name="level" style="height:50px;" disabled>
-				<option value="2" <?php if($data['level'] == 2) echo "selected"; ?>>Member</option>
-				<option value="1" <?php if($data['level'] == 1) echo "selected"; ?>>Administrator</option>
+			<label for="" class="">Nhóm</label> <select multiple
+				class="form-control" name="group" style="height: 110px;" disabled>
+				<?php 
+				if($group_user){
+					foreach($group_user as $value){
+						if($value['group_id'] == $data['group_id']){
+							echo "<option value='$value[group_id]' selected>$value[usergroup]</option>";
+						} else {
+							echo "<option value='$value[group_id]'>$value[usergroup]</option>";
+						}
+					}
+				}
+				?>
 			</select>
-		</div>
-		<div class="rightselect">
-		<label for="" class="">Chức vụ</label> <select multiple
-			class="form-control" name="role" style="height:110px;" disabled>
-			<option value="1" selected>Quản trị cấp cao</option>
-			<option value="2">Quản trị viên</option>
-			<option value="3">Biên tập viên</option>
-			<option value="4">Tác giả</option>
-			<option value="5">Cộng tác viên</option>
-		</select>
 		</div>
 		<div class="rightselect">
 			<label for="" class="">Trạng thái</label> <select multiple
