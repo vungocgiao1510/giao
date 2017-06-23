@@ -26,7 +26,9 @@ if ($error != "") {
 					<th>Sửa</th>
 					<th>Xóa</th>
 				</tr>
-			
+			<?php 
+			listMenu($listmenu);
+			?>
 			</table>
 		</div>
 	</div>	

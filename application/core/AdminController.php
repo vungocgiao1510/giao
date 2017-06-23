@@ -27,6 +27,10 @@ class AdminController extends MY_Controller {
 		$lang = $this->session->userdata ['lang'];
 		$this->_data ['getlangID'] = $lang;
 		$this->form_validation->CI =& $this;
+		// Helper cho link SEO.
+		$this->load->helper("Seourl");
+		// Helper cho menu đệ quy.
+		$this->load->helper("Menu");
 		/*
 		 * Mảng menu trái được gọi ra giúp dễ tùy biến hơn thay vì sử dụng HTML hiển thị.
 		 */

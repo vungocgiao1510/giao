@@ -42,7 +42,7 @@ if (validation_errors () != "") {
 			<label for="username" class="col-sm-3 control-label">Ảnh đại diện</label>
 			<div class="col-sm-8">
 				<input type="text" class="form-control txtupload" id="thumb_img" name="image"
-					placeholder="Chưa có hình ảnh nào.." disabled>
+					placeholder="Chưa có hình ảnh nào..">
 			</div>
 			<div class="col-sm-1">
 				<a href="javascript:void(0)"><img readonly="readonly" onclick="openKCFinder(thumb_img)" src="<?php echo base_url()."public/gcms/img/photos.png"?>" /></a>
@@ -111,6 +111,9 @@ if (validation_errors () != "") {
 			<label for="" class="">Chủ đề cha</label> <select multiple
 				class="form-control" name="menu" style="height: 300px;">
 				<option value="0" selected>Chủ đề gốc</option>
+				<?php 
+				callMenu($menu);
+				?>
 			</select>
 		</div>
 	</div>
