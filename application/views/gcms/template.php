@@ -25,6 +25,7 @@ var baseUrl="<?php echo base_url();?>";
 <script
 	src="<?php echo base_url(); ?>public/gcms/js/jquery-3.2.1.min.js"></script>
 <script src="<?php echo base_url(); ?>public/gcms/js/jquery_code.js"></script>
+<script src="<?php echo base_url(); ?>public/gcms/js/qwertyuiopasdfghjklzxcvbnm1234567890/ckeditor.js"></script>
 </head>
 <body>
 	<div id="topmenu">

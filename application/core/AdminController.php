@@ -96,11 +96,11 @@ class AdminController extends MY_Controller {
 						"parent" => array (
 								array (
 										"parentname" => "Tất cả chuyên mục",
-										"parenturl" => "#" 
+										"parenturl" => base_url () . "gcms/categorie/index" 
 								),
 								array (
 										"parentname" => "Chuyên mục mới",
-										"parenturl" => "#" 
+										"parenturl" => base_url () . "gcms/categorie/add" 
 								) 
 						) 
 				),

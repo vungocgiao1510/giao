@@ -18,7 +18,7 @@ if (validation_errors () != "") {
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="username" class="col-sm-3 control-label">Nội dung</label>
+			<label for="" class="col-sm-3 control-label">Nội dung</label>
 			<div class="col-sm-9">
 				<textarea class="form-control" rows="5" placeholder="Nội dung" name="description"></textarea>
 			</div>
