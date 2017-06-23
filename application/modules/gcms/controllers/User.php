@@ -2,6 +2,131 @@
 class User extends AdminController {
 	public function __construct() {
 		parent::__construct ();
+		$this->_data ['checkboxgroup'] = array (
+				"Quản lý bài viết" => array (
+						"news/index" => array (
+								"Danh sách bài viết"
+						),
+						"news/add" => array (
+								"Thêm mới bài viết"
+						),
+						"news/edit" => array (
+								"Sửa bài viết"
+						),
+						"news/delete" => array (
+								"Xóa bài viết"
+						)
+				),
+				"Quản lý sản phẩm" => array (
+						"products/index" => array (
+								"Danh sách sản phẩm"
+						),
+						"products/add" => array (
+								"Thêm mới sản phẩm"
+						),
+						"products/edit" => array (
+								"Sửa sản phẩm"
+						),
+						"products/delete" => array (
+								"Xóa sản phẩm"
+						)
+				),
+				"Quản lý đơn hàng" => array (
+						"order/index" => array (
+								"Tất cả đơn hàng"
+						),
+						"order/deactive" => array (
+								"Đơn hàng chưa xử lý"
+						),
+						"order/active" => array (
+								"Đơn hàng đã xử lý"
+						),
+						"order/view" => array (
+								"Xem đơn hàng"
+						),
+						"order/delete" => array (
+								"Xóa đơn hàng"
+						)
+				),
+				"Quản lý chuyên mục" => array (
+						"categorie/index" => array (
+								"Danh sách chuyên mục"
+						),
+						"categorie/add" => array (
+								"Thêm mới chuyên mục"
+						),
+						"categorie/edit" => array (
+								"Sửa chuyên mục"
+						),
+						"categorie/delete" => array (
+								"Xóa chuyên mục"
+						)
+				),
+				"Giao diện website" => array (
+						"designed/index" => array (
+								"Giao diện website"
+						)
+				),
+				"Quản lý thành viên" => array (
+						"user/index" => array (
+								"Danh sách thành viên"
+						),
+						"user/add" => array (
+								"Thêm mới thành viên"
+						),
+						"user/edit" => array (
+								"Sửa thành viên"
+						),
+						"user/delete" => array (
+								"Xóa thành viên"
+						),
+						"user/deletecb" => array (
+								"Chọn thành viên xóa"
+						),
+						"user/usergroup" => array (
+								"Nhóm thành viên"
+						),
+						"user/add_usergroup" => array (
+								"Thêm nhóm thành viên"
+						),
+						"user/edit_usergroup" => array (
+								"Sửa nhóm thành viên"
+						) ,
+						"user/del_usergroup" => array (
+								"Xóa nhóm thành viên"
+						) ,
+						"user/deletecbgroup" => array (
+								"Chọn nhóm xóa"
+						)
+				),
+				"Hòm thư liên hệ" => array (
+						"mail/index" => array (
+								"Danh sách liên hệ"
+						),
+						"mail/view" => array (
+								"Trả lời thư"
+						),
+						"mail/delete" => array (
+								"Xóa thư"
+						)
+				),
+				"Bình luận phản hồi" => array (
+						"comment/index" => array (
+								"Danh sách bình luận"
+						),
+						"comment/view" => array (
+								"Trả lời bình luận"
+						),
+						"comment/delete" => array (
+								"Xóa bình luận"
+						) 	,
+				),
+				"Cài đặt hệ thống" => array (
+						"setting/index" => array (
+								"Cài đặt hệ thống"
+						),
+				) ,
+		);
 	}
 	public function index() {
 		$this->_data ['title'] = "Danh sách thành viên";
@@ -291,113 +416,6 @@ class User extends AdminController {
 		$this->load->view ( $this->_data ['path'], $this->_data );
 	}
 	public function add_usergroup() {
-		$this->_data ['checkboxgroup'] = array (
-				"Quản lý bài viết" => array (
-						"news/index" => array (
-								"Danh sách bài viết" 
-						),
-						"news/add" => array (
-								"Thêm mới bài viết" 
-						),
-						"news/edit" => array (
-								"Sửa bài viết" 
-						) 
-				),
-				"Quản lý sản phẩm" => array (
-						"products/index" => array (
-								"Danh sách sản phẩm" 
-						),
-						"products/add" => array (
-								"Thêm mới sản phẩm" 
-						),
-						"products/edit" => array (
-								"Sửa sản phẩm" 
-						) 
-				),
-				"Quản lý đơn hàng" => array (
-						"order/index" => array (
-								"Tất cả đơn hàng" 
-						),
-						"order/deactive" => array (
-								"Đơn hàng chưa xử lý" 
-						),
-						"order/active" => array (
-								"Đơn hàng đã xử lý" 
-						),
-						"order/view" => array (
-								"Xem đơn hàng" 
-						) 
-				),
-				"Quản lý chuyên mục" => array (
-						"categorie/index" => array (
-								"Danh sách chuyên mục" 
-						),
-						"categorie/add" => array (
-								"Thêm mới chuyên mục" 
-						),
-						"categorie/edit" => array (
-								"Sửa chuyên mục" 
-						) 
-				),
-				"Giao diện website" => array (
-						"designed/index" => array (
-								"Giao diện website" 
-						) 
-				),
-				"Quản lý thành viên" => array (
-						"user/index" => array (
-								"Danh sách thành viên" 
-						),
-						"user/add" => array (
-								"Thêm mới thành viên" 
-						),
-						"user/edit" => array (
-								"Sửa thành viên" 
-						),
-						"user/delete" => array (
-								"Xóa thành viên"
-						),
-						"user/deletecb" => array (
-								"Chọn thành viên xóa"
-						),
-						"user/usergroup" => array (
-								"Nhóm thành viên" 
-						),
-						"user/add_usergroup" => array (
-								"Thêm nhóm thành viên" 
-						),
-						"user/edit_usergroup" => array (
-								"Sửa nhóm thành viên" 
-						) ,
-						"user/del_usergroup" => array (
-								"Xóa nhóm thành viên"
-						) ,
-						"user/deletecbgroup" => array (
-								"Chọn nhóm xóa"
-						) 
-				),
-				"Hòm thư liên hệ" => array (
-						"mail/index" => array (
-								"Danh sách liên hệ" 
-						),
-						"mail/view" => array (
-								"Trả lời thư" 
-						) 
-				),
-				"Bình luận phản hồi" => array (
-						"comment/index" => array (
-								"Danh sách bình luận" 
-						),
-						"comment/view" => array (
-								"Trả lời bình luận" 
-						) 
-				),
-				"Cài đặt hệ thống" => array (
-						"setting/index" => array (
-								"Cài đặt hệ thống" 
-						) 
-				) 
-		);
 		$this->_data ['error'] = "";
 		$this->_data ['title'] = "Thêm mới nhóm thành viên";
 		$this->_data ['loadPage'] = "user/addusergroup_view";
@@ -427,7 +445,41 @@ class User extends AdminController {
 		// echo $this->db->last_query();
 		$this->load->view ( $this->_data ['path'], $this->_data );
 	}
-	public function edit_usergroup() {
+	public function edit_usergroup($id ="") {
+		// Kiểm tra xem id có bằng 1 không, nếu id bằng 1 không được quyền sửa.
+		if ($id == 1) {
+			$this->session->set_flashdata ( "flash_error", "Bạn không đủ quyền hạn để sửa thành viên này." );
+			redirect ( base_url () . "gcms/user/index" );
+		}
+		$this->_data ['error'] = "";
+		$this->_data ['title'] = "Sửa nhóm thành viên";
+		$this->_data ['loadPage'] = "user/editusergroup_view";
+		// Hiển thị thông tin member khi get được ID.
+		$this->_data ['data'] = $this->Muser->listUserGroupById( $id );
+		// Validation Form khi nhập sai thông tin.
+		$this->form_validation->set_message ( 'required', '{field} không được để trống.' );
+		$this->form_validation->set_message ( 'min_length', '{field} phải nhiều hơn 5 ký tự.' );
+		$this->form_validation->set_message ( 'max_length', '{field} phải nhỏ hơn 14 ký tự.' );
+		$this->form_validation->set_rules ( 'usergroup', 'Tài khoản', 'required|min_length[5]|max_length[14]' );
+		if ($this->form_validation->run () == TRUE) {
+			$permission = json_encode ( $this->input->post ( "cbpermissions" ) );
+			// Mảng chưa dữ liệu cần update
+			$data_update = array (
+					"usergroup" => $this->input->post ( "usergroup" ),
+					"description" => $this->input->post ( "description" ),
+					"level" => $this->input->post ( "level" ),
+					"updated" => date ( "Y-m-d" ) 
+			);
+			if ($permission != NULL) {
+				$data_update["permissions"] = $permission;
+			}
+			// Update nhóm thành viên vào trong CSDL.
+			$this->Muser->updateUserGroup( $data_update, $id );
+			// Flashdata báo sửa thành công.
+			$this->session->set_flashdata ( "flash_mess", "Hoàn tất thủ tục sửa nhóm thành viên." );
+			redirect ( base_url () . "gcms/user/usergroup" );
+		}
+		$this->load->view ( $this->_data ['path'], $this->_data );
 	}
 	public function del_usergroup($id = "") {
 		// Kiểm tra xem id có bằng 1 không, nếu id bằng 1 không được quyền thêm.

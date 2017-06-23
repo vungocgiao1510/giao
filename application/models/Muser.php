@@ -91,9 +91,18 @@ class Muser extends CI_Model {
 		$this->db->limit ( $all, $start );
 		return $this->db->get ( $this->_table2 )->result_array ();
 	}
+	public function listUserGroupById($id){
+		$this->db->where("group_id",$id);
+		return $this->db->get ( $this->_table2 )->row_array();
+	}
 	public function listUserGroupSelectBox(){
 		$this->db->order_by("group_id","desc");
 		return $this->db->get ( $this->_table2 )->result_array ();
+	}
+	public function updateUserGroup($data, $id) {
+		// Sửa thành viên.
+		$this->db->where ( "group_id", $id );
+		$this->db->update ( $this->_table2, $data );
 	}
 	public function countAllUserGroup() {
 		return $this->db->count_all ( $this->_table2 );
