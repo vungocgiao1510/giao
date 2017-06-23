@@ -26,6 +26,20 @@ var baseUrl="<?php echo base_url();?>";
 	src="<?php echo base_url(); ?>public/gcms/js/jquery-3.2.1.min.js"></script>
 <script src="<?php echo base_url(); ?>public/gcms/js/jquery_code.js"></script>
 <script src="<?php echo base_url(); ?>public/gcms/js/qwertyuiopasdfghjklzxcvbnm1234567890/ckeditor.js"></script>
+<script type="text/javascript">
+function openKCFinder(field) {
+    window.KCFinder = {
+        callBack: function(url) {
+            field.value = url;
+            window.KCFinder = null;
+        }
+    };
+    window.open(baseUrl+'public/gcms/js/qwertyuiopasdfghjklzxcvbnm1234567890/gcmsadminkcfinder/browse.php?type=files&dir=files/public', 'kcfinder_textbox',
+        'status=0, toolbar=0, location=0, menubar=0, directories=0, ' +
+        'resizable=1, scrollbars=0, width=800, height=600'
+    );
+}
+</script>
 </head>
 <body>
 	<div id="topmenu">

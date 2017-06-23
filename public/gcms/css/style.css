@@ -2,6 +2,9 @@ body{
 	font-family: 'Roboto', sans-serif;
 	color:#777;
 }
+.txtupload{
+	background-color:#fff !important;
+}
 .active{
 	border-radius:0px;
 }

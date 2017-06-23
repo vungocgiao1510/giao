@@ -1,21 +1,7 @@
-<script type="text/javascript">
-function openKCFinder(field) {
-    window.KCFinder = {
-        callBack: function(url) {
-            field.value = url;
-            window.KCFinder = null;
-        }
-    };
-    window.open(baseUrl+'public/gcms/js/qwertyuiopasdfghjklzxcvbnm1234567890/gcmsadminkcfinder/browse.php?type=files&dir=files/public', 'kcfinder_textbox',
-        'status=0, toolbar=0, location=0, menubar=0, directories=0, ' +
-        'resizable=1, scrollbars=0, width=800, height=600'
-    );
-}
-</script>
 <div class="col-md-12">
 	<legend>Thêm mới chuyên mục</legend>
 </div>
-<form class="form-horizontal" action="" method="POST">
+<form class="form-horizontal" action="" method="POST" enctype="multipart/form-data">
 	<div class="col-md-8">
 <?php
 if (validation_errors () != "") {
@@ -54,9 +40,12 @@ if (validation_errors () != "") {
 		</div>
 		<div class="form-group">
 			<label for="username" class="col-sm-3 control-label">Ảnh đại diện</label>
-			<div class="col-sm-9">
-				<input readonly="readonly" onclick="openKCFinder(this)" type="text" class="form-control" id="" name="image"
-					placeholder="Bấm vào đây để upload ảnh đại diện">
+			<div class="col-sm-8">
+				<input type="text" class="form-control txtupload" id="thumb_img" name="image"
+					placeholder="Chưa có hình ảnh nào.." disabled>
+			</div>
+			<div class="col-sm-1">
+				<a href="javascript:void(0)"><img readonly="readonly" onclick="openKCFinder(thumb_img)" src="<?php echo base_url()."public/gcms/img/photos.png"?>" /></a>
 			</div>
 		</div>
 		<div class="form-group">
