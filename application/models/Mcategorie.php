@@ -14,13 +14,19 @@ class Mcategorie extends CI_Model{
 			return FALSE;
 		}
 	}
+	public function listCategorieById($id){
+		$this->db->where("id",$id);
+		return $this->db->get($this->_table)->row_array();
+	}
 	public function insertCategorie($data){
 		$this->db->insert($this->_table,$data);
 	}
-	public function editCategorie(){
-		
+	public function updateCategorie($id,$data){
+		$this->db->where("id",$id);
+		$this->db->update($this->_table,$data);
 	}
-	public function deleteCategorie(){
-		
+	public function deleteCategorie($id){
+		$this->db->where("id",$id);
+		$this->db->delete($this->_table);
 	}
 }

@@ -18,7 +18,7 @@ if ($error != "") {
 		<div class="table-responsive">
 			<table class="table table-bordered">
 				<tr class="info">
-					<th>STT</th>
+					<th>ID</th>
 					<th>Chuyên mục</th>
 					<th>Ngày tạo</th>
 					<th>Ngày sửa</th>
