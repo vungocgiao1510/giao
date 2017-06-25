@@ -4,8 +4,33 @@ class Mcategorie extends CI_Model{
 	public function __construct(){
 		parent::__construct();
 	}
-	public function listCategorie(){
+	public function listCategorie($lang="vn"){
 		$this->db->where("active",1);
+		$this->db->where("lang",$lang);
+		$this->db->order_by("cate_order","asc");
+		$query = $this->db->get($this->_table);
+		if($query->num_rows() > 0){
+			return $query->result_array();
+		}else{
+			return FALSE;
+		}
+	}
+	public function listCategorieNews($lang="vn"){
+		$this->db->where("active",1);
+		$this->db->where("service",1);
+		$this->db->where("lang",$lang);
+		$this->db->order_by("cate_order","asc");
+		$query = $this->db->get($this->_table);
+		if($query->num_rows() > 0){
+			return $query->result_array();
+		}else{
+			return FALSE;
+		}
+	}
+	public function listCategorieProducts($lang="vn"){
+		$this->db->where("active",1);
+		$this->db->where("service",2);
+		$this->db->where("lang",$lang);
 		$this->db->order_by("cate_order","asc");
 		$query = $this->db->get($this->_table);
 		if($query->num_rows() > 0){

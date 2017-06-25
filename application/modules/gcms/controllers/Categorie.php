@@ -10,9 +10,9 @@ class Categorie extends AdminController {
 		$this->_data ['success'] = $this->session->flashdata ( "flash_mess" );
 		$this->_data ['data'] = "";
 		if ($this->Mcategorie->listCategorie () != FALSE) {
-			$this->_data ['listmenu'] = $this->Mcategorie->listCategorie ();
+			$this->_data ['listmenu'] = $this->Mcategorie->listCategorie ($this->session->userdata('lang'));
 		}
-		// echo $this->db->last_query();
+// 		 echo $this->db->last_query();
 		$this->load->view ( $this->_data ['path'], $this->_data );
 	}
 	public function add() {
@@ -23,7 +23,7 @@ class Categorie extends AdminController {
 		$this->_data ['error'] = "";
 		// Hiển thị danh sách chuyên mục qua select box.
 		if ($this->Mcategorie->listCategorie () != FALSE) {
-			$this->_data ['menu'] = $this->Mcategorie->listCategorie ();
+			$this->_data ['menu'] = $this->Mcategorie->listCategorie ($this->session->userdata('lang'));
 		}
 		$this->form_validation->set_message ( 'required', '{field} không được để trống.' );
 		$this->form_validation->set_message ( 'min_length', '{field} phải nhiều hơn 5 ký tự.' );
@@ -65,7 +65,7 @@ class Categorie extends AdminController {
 		$data_update['image'] = "";
 		// Hiển thị danh sách chuyên mục qua select box.
 		if ($this->Mcategorie->listCategorie () != FALSE) {
-			$this->_data ['menu'] = $this->Mcategorie->listCategorie ();
+			$this->_data ['menu'] = $this->Mcategorie->listCategorie ($this->session->userdata('lang'));
 		}
 		$this->_data ['data'] = $this->Mcategorie->listCategorieById ( $id );
 		$this->form_validation->set_message ( 'required', '{field} không được để trống.' );

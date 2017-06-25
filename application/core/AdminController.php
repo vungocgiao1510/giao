@@ -48,11 +48,11 @@ class AdminController extends MY_Controller {
 						"parent" => array (
 								array (
 										"parentname" => "Tất cả bài viết",
-										"parenturl" => "#" 
+										"parenturl" => base_url () . "gcms/news/index"
 								),
 								array (
 										"parentname" => "Bài viết mới",
-										"parenturl" => "#" 
+										"parenturl" => base_url () . "gcms/news/add"
 								) 
 						) 
 				),
