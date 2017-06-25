@@ -26,7 +26,7 @@ if ($error != "") {
 	<div class="search">
 	<form action="" method="GET">
 			<div class="form-group">
-				<input type="text" class="form-control searchds" name="keyword" id="keyword" placeholder="Nhập tên thành viên cần tìm." required>
+				<input type="text" class="form-control searchds" name="keyword" id="keyword" placeholder="Nhập tên bài viết cần tìm." required>
 				<input type="submit" id="searchform" value="Tìm kiếm" class="btn btn-primary active" />
 			</div>	
 	</form>
@@ -34,7 +34,7 @@ if ($error != "") {
 
 </div>
 <div class="cls"></div>
-<form action="<?php echo base_url()."gcms/user/deletecb" ?>" method="post" name="formdeletecb" id="formdeletecb" >
+<form action="<?php echo base_url()."gcms/news/deletecb" ?>" method="post" name="formdeletecb" id="formdeletecb" >
 <div id="result">
 <div class="table-responsive">
 	<table class="table table-bordered">
@@ -60,7 +60,7 @@ if ($error != "") {
 			echo "<td><input type='checkbox' id='box_$val[id]' name='checkAll[]' value='$val[id]' class='checkSingle'></td>";
 			echo "<td>$stt</td>";
 			echo "<td><img src='$val[image]' width='80' /></td>";
-			echo "<td><a class='editname' href='" . base_url () . "gcms/user/edit/$val[id]'>$val[title]</a></td>";
+			echo "<td><a class='editname' href='" . base_url () . "gcms/news/edit/$val[id]'>$val[title]</a></td>";
 			echo "<td>$val[cate_title]</td>";
 			echo "<td>$val[username]</td>";
 			echo "<td>" . date ( "d/m/Y", strtotime ( $val ["created"] ) ) . "</td>";
@@ -70,8 +70,8 @@ if ($error != "") {
 			} else {
 				echo "<td><a class='btn btn-danger active'>Đã khóa</a></td>";
 			}
-			echo "<td><a href='" . base_url () . "gcms/user/edit/$val[id]'><img src='".base_url()."public/gcms/img/edit.png' alt='Edit' title='Edit' /></a></td>";
-			echo "<td><a href='" . base_url () . "gcms/user/delete/$val[id]' onclick='return confirm(\"Bán có muốn xóa bản ghi này không?\");'><img src='".base_url()."public/gcms/img/garbage.png' alt='Delete' title='Delete' /></a></td>";
+			echo "<td><a href='" . base_url () . "gcms/news/edit/$val[id]'><img src='".base_url()."public/gcms/img/edit.png' alt='Edit' title='Edit' /></a></td>";
+			echo "<td><a href='" . base_url () . "gcms/news/delete/$val[id]' onclick='return confirm(\"Bán có muốn xóa bản ghi này không?\");'><img src='".base_url()."public/gcms/img/garbage.png' alt='Delete' title='Delete' /></a></td>";
 			echo "</tr>";
 		}
 	} else {

@@ -108,22 +108,22 @@ class AdminController extends MY_Controller {
 								) 
 						) 
 				),
-				array (
-						"root" => "Giao diện website",
-						"img" => base_url () . "public/gcms/img/open-wrench-tool-silhouette.png",
-						"url" => base_url () . "gcms/designed/index",
-						"controller" => "designed",
-						"parent" => array (
-								array (
-										"parentname" => "Tùy chỉnh",
-										"parenturl" => "#" 
-								),
-								array (
-										"parentname" => "Liên kết",
-										"parenturl" => "#" 
-								) 
-						) 
-				),
+// 				array (
+// 						"root" => "Giao diện website",
+// 						"img" => base_url () . "public/gcms/img/open-wrench-tool-silhouette.png",
+// 						"url" => base_url () . "gcms/designed/index",
+// 						"controller" => "designed",
+// 						"parent" => array (
+// 								array (
+// 										"parentname" => "Tùy chỉnh",
+// 										"parenturl" => "#" 
+// 								),
+// 								array (
+// 										"parentname" => "Liên kết",
+// 										"parenturl" => "#" 
+// 								) 
+// 						) 
+// 				),
 				array (
 						"root" => "Quản lý thành viên",
 						"img" => base_url () . "public/gcms/img/group-profile-users.png",
