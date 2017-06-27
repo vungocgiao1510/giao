@@ -1,20 +1,20 @@
 <?php
-class Mnews extends CI_Model{
-	protected $_table = "news";
+class Mproducts extends CI_Model{
+	protected $_table = "products";
 	public function __construct(){
 		parent::__construct();
 	}
 	public function listAllNews($all, $start, $lang="vn", $order="desc", $active="") {
 		// Hiển thị toàn bộ bài viết.
 		if($active != ""){
-			$this->db->where("news.active", $active);
+			$this->db->where("products.active", $active);
 		}
-		$this->db->where("news.lang",$lang);
-		$this->db->select("news.id, news.title, news.created, news.updated,news.image, news.active, users.username, categorie.title as cate_title");		
-		$this->db->order_by("news.id",$order);
+		$this->db->where("products.lang",$lang);
+		$this->db->select("products.id, products.title, products.created, products.updated,products.image, products.active, users.username, categorie.title as cate_title");		
+		$this->db->order_by("products.id",$order);
 		$this->db->limit ( $all, $start );
-		$this->db->join("categorie","categorie.id = news.cate_id");
-		$this->db->join("users","users.id = news.user_id");
+		$this->db->join("categorie","categorie.id = products.cate_id");
+		$this->db->join("users","users.id = products.user_id");
 		return $this->db->get ( $this->_table )->result_array ();
 	}
 	public function getNewsById($id){
@@ -34,15 +34,15 @@ class Mnews extends CI_Model{
 	}
 	public function SearchNewsByKeyword($keyword,$all,$start,$order="desc", $active="",$lang="vn"){
 		if($active != ""){
-			$this->db->where("news.active", $active);
+			$this->db->where("products.active", $active);
 		}
-		$this->db->where("news.lang",$lang);
-		$this->db->select("news.id, news.title, news.created, news.updated,news.image, news.active, users.username, categorie.title as cate_title");
+		$this->db->where("products.lang",$lang);
+		$this->db->select("products.id, news.title, news.created, news.updated,news.image, news.active, users.username, categorie.title as cate_title");
 		$this->db->limit ( $all, $start );
-		$this->db->order_by("news.id",$order);
-		$this->db->like('news.title',$keyword);
-		$this->db->join("categorie","categorie.id = news.cate_id");
-		$this->db->join("users","users.id = news.user_id");
+		$this->db->order_by("products.id",$order);
+		$this->db->like('products.title',$keyword);
+		$this->db->join("categorie","categorie.id = products.cate_id");
+		$this->db->join("users","users.id = products.user_id");
 		$query = $this->db->get($this->_table);
 		return $query->result_array();
 	}

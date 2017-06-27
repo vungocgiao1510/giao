@@ -2,6 +2,9 @@ body{
 	font-family: 'Roboto', sans-serif;
 	color:#777;
 }
+.table-responsive {
+	padding-top:20px;
+}
 .txtupload{
 	background-color:#fff !important;
 }
@@ -33,6 +36,9 @@ body{
 }
 .npd{
 	padding-left:0px;
+	padding-right:0px;
+}
+.npdr{
 	padding-right:0px;
 }
 #topmenu nav{
@@ -91,15 +97,15 @@ body{
 #main{
 	padding-left:0px;
 }
-.add{
+/*.add{
 	width:10%;
 	float:left;
 }
 .setting{
 	width:20%;
 	float:left;
-}
-.locds{
+}*/
+/*.locds{
 	width:70%;
 	float:left;
 	margin-right:5px;
@@ -112,7 +118,7 @@ body{
 	width:75%;
 	float:left;
 	margin-right:5px;
-}
+}*/
 .rightselect{
 	margin-bottom:10px;
 }

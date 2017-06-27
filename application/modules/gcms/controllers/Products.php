@@ -1,11 +1,11 @@
 <?php
-class News extends AdminController{
+class Products extends AdminController{
 	public function __construct(){
 		parent::__construct();
 	}
 	public function index(){
 		$this->_data ['title'] = "Danh sách bài viết";
-		$this->_data ['loadPage'] = "news/index_view";
+		$this->_data ['loadPage'] = "products/index_view";
 		$this->_data ['error'] = $this->session->flashdata ( "flash_error" );
 		$this->_data ['success'] = $this->session->flashdata ( "flash_mess" );
 		$this->_data ['data'] = "";
@@ -13,9 +13,9 @@ class News extends AdminController{
 		$this->_data ['countSearch'] = "";
 		$lang = $this->session->userdata ['lang'];
 		// config setting phần phân trang.
-		$config ['base_url'] = ($this->input->get ( "keyword" )) ? base_url () . "gcms/news/index/?keyword=" . $this->input->get ( "keyword" ) : base_url () . "gcms/news/index/";
+		$config ['base_url'] = ($this->input->get ( "keyword" )) ? base_url () . "gcms/products/index/?keyword=" . $this->input->get ( "keyword" ) : base_url () . "gcms/products/index/";
 		// $config ['base_url'] = base_url () . "gcms/user/index/";
-		$config ['total_rows'] = ($this->input->get ( "keyword" )) ? $this->Mnews->countSearchNews( $this->input->get ( "keyword" ),$lang) : $this->Mnews->countAll ($lang);
+		$config ['total_rows'] = ($this->input->get ( "keyword" )) ? $this->Mproducts->countSearchNews( $this->input->get ( "keyword" ),$lang) : $this->Mproducts->countAll ($lang);
 		$config ['per_page'] = ($this->session->userdata ( "limit" )) ? $this->session->userdata ( "limit" ) : 10;
 		$config ['uri_segment'] = 4;
 		$config ['full_tag_open'] = '<ul class="pagination">';
@@ -59,25 +59,26 @@ class News extends AdminController{
 			// $ses_search = array("keyword" => $this->input->get("keyword"));
 			// $this->session->set_userdata($ses_search);
 			$this->_data ['keyword'] = $this->input->get ( "keyword" );
-			$this->_data ['countSearch'] = $this->Mnews->countSearchNews( $this->_data ['keyword'], $lang);
-			$this->_data ['data'] = $this->Mnews->SearchNewsByKeyword( $this->_data ['keyword'], $config ['per_page'], $start, $lang);
+			$this->_data ['countSearch'] = $this->Mproducts->countSearchNews( $this->_data ['keyword'], $lang);
+			$this->_data ['data'] = $this->Mproducts->SearchNewsByKeyword( $this->_data ['keyword'], $config ['per_page'], $start, $lang);
 		} elseif ($locds == "desc" || $locds == "asc") {
-			$this->_data ['data'] = $this->Mnews->listAllNews( $config ['per_page'], $start, $lang, $locds);
+			$this->_data ['data'] = $this->Mproducts->listAllNews( $config ['per_page'], $start, $lang, $locds);
 		} elseif ($locds == "1" || $locds == "2") {
-			$this->_data ['data'] = $this->Mnews->listAllNews( $config ['per_page'], $start,$lang,"", $locds);
+			$this->_data ['data'] = $this->Mproducts->listAllNews( $config ['per_page'], $start,$lang,"", $locds);
 		} else {
-			$this->_data ['data'] = $this->Mnews->listAllNews( $config ['per_page'], $start,$lang);
+			$this->_data ['data'] = $this->Mproducts->listAllNews( $config ['per_page'], $start,$lang);
 		}
 // 		echo $this->db->last_query();
 		$this->load->view ( $this->_data ['path'], $this->_data );
 	}
 	public function add(){
 		$this->_data ['error'] = "";
-		$this->_data ['title'] = "Thêm mới bài viết";
-		$this->_data ['loadPage'] = "news/add_view";
+		$this->_data ['title'] = "Thêm mới sản phẩm";
+		$this->_data ['loadPage'] = "products/add_view";
 		$data_insert['content'] = "";
 		$data_insert['list_image'] = "";
-		$this->_data['menu'] = $this->Mcategorie->listCategorieNews($this->session->userdata('lang'));
+		$data_insert['properties'] = "";
+		$this->_data['menu'] = $this->Mcategorie->listCategorieProducts($this->session->userdata('lang'));
 		// Validation Form khi nhập sai
 		$this->form_validation->set_message ( 'required', '{field} không được để trống.' );
 		$this->form_validation->set_message ( 'min_length', '{field} phải nhiều hơn 5 ký tự.' );
@@ -102,6 +103,8 @@ class News extends AdminController{
 					"description" => $this->input->post ( "description" ),
 					"image" => $this->input->post ( "image" ),
 					"type" => $this->input->post ( "type" ),
+					"promotion" => $this->input->post ( "promotion" ),
+					"price" => $this->input->post ( "price" ),
 					"user_id" => $this->session->userdata("id"),
 					"cate_id" => $this->input->post ( "menu" ),
 					"created" => date ( "Y-m-d" ),
@@ -114,23 +117,28 @@ class News extends AdminController{
 			if($this->input->post("list_image") != ""){
 				$data_insert['list_image'] = $this->input->post ( "list_image" );
 			}
+			if($this->input->post("properties")){
+				$properties = json_encode($this->input->post ( "properties" ));
+				$data_insert['properties'] = $properties;
+			}
 			// Insert dữ liệu
-			$this->Mnews->insertNews($data_insert );
+			$this->Mproducts->insertNews($data_insert );
 			// Flash mess thông báo insert thành công
-			$this->session->set_flashdata ( "flash_mess", "Hoàn tất thủ tục thêm bài viết." );
-			redirect ( base_url () . "gcms/news/index" );
+			$this->session->set_flashdata ( "flash_mess", "Hoàn tất thủ tục thêm sản phẩm." );
+			redirect ( base_url () . "gcms/products/index" );
 		}
 		// echo $this->db->last_query();
 		$this->load->view ( $this->_data ['path'], $this->_data );
 	}
 	public function edit($id=""){
 		$this->_data ['error'] = "";
-		$this->_data ['title'] = "Cập nhật thành viên";
-		$this->_data ['loadPage'] = "news/edit_view";
+		$this->_data ['title'] = "Cập nhật sản phẩm";
+		$this->_data ['loadPage'] = "products/edit_view";
 		$data_insert['content'] = "";
 		$data_insert['list_image'] = "";
-		$this->_data['menu'] = $this->Mcategorie->listCategorieNews($this->session->userdata('lang'));
-		$this->_data['data'] = $this->Mnews->getNewsById($id);
+		$data_insert['properties'] = "";
+		$this->_data['menu'] = $this->Mcategorie->listCategorieProducts($this->session->userdata('lang'));
+		$this->_data['data'] = $this->Mproducts->getNewsById($id);
 		// Validation Form khi nhập sai
 		$this->form_validation->set_message ( 'required', '{field} không được để trống.' );
 		$this->form_validation->set_message ( 'min_length', '{field} phải nhiều hơn 5 ký tự.' );
@@ -154,6 +162,8 @@ class News extends AdminController{
 					"description" => $this->input->post ( "description" ),
 					"image" => $this->input->post ( "image" ),
 					"type" => $this->input->post ( "type" ),
+					"promotion" => $this->input->post ( "promotion" ),
+					"price" => $this->input->post ( "price" ),
 					"user_id" => $this->session->userdata("id"),
 					"cate_id" => $this->input->post ( "menu" ),
 					"updated" => date ( "Y-m-d" ),
@@ -166,30 +176,34 @@ class News extends AdminController{
 			if($this->input->post("list_image") != ""){
 				$data_update['list_image'] = $this->input->post ( "list_image" );
 			}
+			if($this->input->post("properties")){
+				$properties = json_encode($this->input->post ( "properties" ));
+				$data_insert['properties'] = $properties;
+			}
 			// Insert dữ liệu
-			$this->Mnews->updateNews($id,$data_update);
+			$this->Mproducts->updateNews($id,$data_update);
 			// Flash mess thông báo insert thành công
 			$this->session->set_flashdata ( "flash_mess", "Hoàn tất thủ sửa bài viết." );
-			redirect ( base_url () . "gcms/news/index" );
+			redirect ( base_url () . "gcms/products/index" );
 		}
 		// echo $this->db->last_query();
 		$this->load->view ( $this->_data ['path'], $this->_data );
 	}
 	public function delete($id=""){
-		$this->Mnews->deleteNews($id);
-		redirect ( base_url () . "gcms/news/index" );
+		$this->Mproducts->deleteNews($id);
+		redirect ( base_url () . "gcms/products/index" );
 	}
 	public function deleteCB() {
 		if ($this->input->post ( "checkAll" )) {
 			foreach ( $this->input->post ( "checkAll" ) as $del_id ) {
 				$del_id = ( int ) $del_id;
-				$this->Mnews->deleteNews( $del_id );
+				$this->Mproducts->deleteNews( $del_id );
 			}
-			$this->session->set_flashdata ( "flash_mess", "Hoàn tất thủ tục xóa bài viết." );
+			$this->session->set_flashdata ( "flash_mess", "Hoàn tất thủ tục xóa sản phẩm." );
 			redirect ( base_url () . "gcms/news/index" );
 		} else {
-			$this->session->set_flashdata ( "flash_error", "Bạn chưa chọn bài viết cần xóa." );
-			redirect ( base_url () . "gcms/news/index" );
+			$this->session->set_flashdata ( "flash_error", "Bạn chưa chọn sản phẩm cần xóa." );
+			redirect ( base_url () . "gcms/products/index" );
 		}
 	}
 }

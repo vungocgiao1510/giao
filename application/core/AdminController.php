@@ -59,16 +59,16 @@ class AdminController extends MY_Controller {
 				array (
 						"root" => "Quản lý sản phẩm",
 						"img" => base_url () . "public/gcms/img/small-rocket-ship-silhouette.png",
-						"url" => base_url () . "gcms/product/index",
-						"controller" => "product",
+						"url" => base_url () . "gcms/products/index",
+						"controller" => "products",
 						"parent" => array (
 								array (
 										"parentname" => "Tất cả sản phẩm",
-										"parenturl" => "#" 
+										"parenturl" => base_url () . "gcms/products/index",
 								),
 								array (
 										"parentname" => "Sản phẩm mới",
-										"parenturl" => "#" 
+										"parenturl" => base_url () . "gcms/products/add"
 								) 
 						) 
 				),

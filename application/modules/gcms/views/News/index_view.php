@@ -7,29 +7,40 @@ if ($error != "") {
 	echo '<div class="alert alert-danger" role="alert">' . $error . '</div>';
 }
 ?>
-<div class="hethong">
-	<div class="add">
+<div class="row" style="margin-top:-15px;">
+	<div class="col-md-1" style="margin-top: 15px;">
 		<a href="<?php echo base_url()."gcms/news/add"; ?>" class="btn btn-primary active">Thêm mới</a>
 	</div>
-	<div class="setting">
+	<div class="col-md-3">
 		<form action="" method="POST">
 			<div class="form-group">
+			<div class="col-sm-10 npdr">
 				<select class="form-control locds" name="locds">
 					<option value="desc" <?php if($locds== "desc") echo "selected"; ?>>Mới nhất</option>
 					<option value="asc" <?php if($locds== "asc") echo "selected"; ?>>Cũ nhất</option>
 					<option value="1" <?php if($locds== "1") echo "selected"; ?>>Đã kích hoạt</option>
 					<option value="2" <?php if($locds== "2") echo "selected"; ?>>Chưa kích hoạt</option>
-				</select> <input type="submit" name="loc" value="Lọc" class="btn btn-primary active" />
+				</select> 
+			</div>
+			<div class="col-sm-2">
+				<input type="submit" name="loc" value="Lọc" class="btn btn-primary active" />
+			</div>
 			</div>
 		</form>
 	</div>
-	<div class="search">
+	<div class="col-md-5">
 	<form action="" method="GET">
 			<div class="form-group">
-				<input type="text" class="form-control searchds" name="keyword" id="keyword" placeholder="Nhập tên bài viết cần tìm." required>
-				<input type="submit" id="searchform" value="Tìm kiếm" class="btn btn-primary active" />
+				<div class="col-sm-10 npdr">
+					<input type="text" class="form-control searchds" name="keyword" id="keyword" placeholder="Nhập tên bài viết cần tìm." required>
+				</div>
+				<div class="col-sm-2">
+					<input type="submit" id="searchform" value="Tìm kiếm" class="btn btn-primary active" />
+				</div>
 			</div>	
 	</form>
+	</div>
+	<div class="col-md-3">
 	</div>
 
 </div>

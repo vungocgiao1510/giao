@@ -7,8 +7,8 @@ if ($error != "") {
 	echo '<div class="alert alert-danger" role="alert">' . $error . '</div>';
 }
 ?>
-<div class="hethong">
-	<div class="add">
+<div class="row" style="margin-top:-15px;">
+	<div class="col-md-1" style="margin-top: 15px;">
 		<a href="<?php echo base_url()."gcms/categorie/add"; ?>" class="btn btn-primary active">Thêm mới</a>
 	</div>
 

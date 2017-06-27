@@ -11,10 +11,10 @@ if (validation_errors () != "") {
 }
 ?>
 		<div class="form-group">
-			<label for="username" class="col-sm-3 control-label">Tên chuyên mục</label>
+			<label for="username" class="col-sm-3 control-label">Tên bài viết</label>
 			<div class="col-sm-9">
 				<input type="text" class="form-control" id="" name="title"
-					placeholder="Tên chuyên mục">
+					placeholder="Tên bài viết">
 			</div>
 		</div>
 		<div class="form-group">
