@@ -1,5 +1,5 @@
 <div class="col-md-12">
-	<legend>Cập nhật bài viết</legend>
+	<legend>Cập nhật sản phẩm</legend>
 </div>
 <form class="form-horizontal" action="" method="POST" enctype="multipart/form-data">
 	<div class="col-md-8">
@@ -39,14 +39,33 @@ if (validation_errors () != "") {
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="" class="col-sm-3 control-label">Miêu tả</label>
+			<label for="username" class="col-sm-3 control-label">Giá cũ</label>
 			<div class="col-sm-9">
-				<textarea class="form-control" rows="5" placeholder="Nội dung" name="description"><?php echo $data['description'] ?></textarea>
+				<input type="text" class="form-control" id="" name="promotion"
+					placeholder="Giá cũ" value="<?php echo $data['promotion'] ?>">
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="" class="col-sm-3 control-label">Nội dung</label>
+			<label for="username" class="col-sm-3 control-label">Giá mới</label>
 			<div class="col-sm-9">
+				<input type="text" class="form-control" id="" name="price"
+					placeholder="Giá mới" value="<?php echo $data['price'] ?>">
+			</div>
+		</div>			
+		<div class="form-group">
+			<label for="" class="col-sm-12 control-label">Miêu tả</label>
+			<div class="col-sm-12">
+				<textarea style='z-index:99999;' class="form-control" rows="5" placeholder="Nội dung" name="description"><?php echo $data['description'] ?></textarea>
+				<script>
+	                // Replace the <textarea id="editor1"> with a CKEditor
+	                // instance, using default configuration.
+	                CKEDITOR.replace( 'description' );
+	            </script>	
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="" class="col-sm-12 control-label">Nội dung</label>
+			<div class="col-sm-12">
 				<textarea style='z-index:99999;' class="form-control" id="content" rows="5" placeholder="Nội dung" name="content"><?php echo $data['content'] ?></textarea>
 				<script>
 	                // Replace the <textarea id="editor1"> with a CKEditor
@@ -101,16 +120,27 @@ if (validation_errors () != "") {
 <!-- 				</label> -->
 <!-- 			</div> -->
 <!-- 		</div> -->
-
-<!-- 		<div class="form-group"> -->
-<!-- 			<label for="username" class="col-sm-3 control-label">Trạng thái hiển -->
-<!-- 				thị</label> -->
-<!-- 			<div class="col-sm-9"> -->
-<!-- 				<label class="checkbox-inline"> <input type="checkbox" -->
-<!-- 					id="" value=""> Hiển thị tại trang chủ -->
-<!-- 				</label> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
+		<div class="form-group">
+			<label for="username" class="col-sm-3 control-label">Màu sắc</label>
+			<div class="col-sm-9">
+			<?php
+			if($propertiescolor){
+				foreach($propertiescolor as $key => $color){
+					echo '<label class="checkbox-inline"> <input type="checkbox"
+					id="" value="'.$key.'" name="properties[]"';
+					if($data['properties'] != ""){
+						foreach(json_decode($data['properties']) as $value){
+							if($value == $key){
+								echo "checked='checked'";
+							}
+						}
+					}
+					echo '> '.$color.'</label>';
+				}
+			}
+			?>
+			</div>
+		</div>
 		<hr>
 		<div class="form-group">
 			<div class="col-sm-offset-3 col-sm-11">

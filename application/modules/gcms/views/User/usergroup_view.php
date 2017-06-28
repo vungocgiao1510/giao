@@ -48,7 +48,8 @@ if ($error != "") {
 <form action="<?php echo base_url()."gcms/user/deletecbgroup" ?>" method="post" name="formdeletecb" id="formdeletecb" >
 <div id="result">
 <div class="table-responsive">
-	<table class="table table-bordered">
+	<table class="table table-bordered table-hover">
+	<thead>
 		<tr class="info">
 			<th><input type="checkbox" id="checkedAll" name="checkedAll"></th>
 			<th>STT</th>
@@ -59,6 +60,8 @@ if ($error != "") {
 			<th>Sửa</th>
 			<th>Xóa</th>
 		</tr>
+	</thead>
+	<tbody>
 	<?php
 	if ($data) {
 		$stt = 0;
@@ -87,6 +90,7 @@ if ($error != "") {
 		echo "<tr><td align='center' colspan='8'>Không có dữ liệu.</td></tr>";
 	}
 	?>
+	</tbody>
 </table>
 </div>
 <!--

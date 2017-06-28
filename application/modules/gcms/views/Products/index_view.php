@@ -45,10 +45,11 @@ if ($error != "") {
 
 </div>
 <div class="cls"></div>
-<form action="<?php echo base_url()."gcms/news/deletecb" ?>" method="post" name="formdeletecb" id="formdeletecb" >
+<form action="<?php echo base_url()."gcms/products/deletecb" ?>" method="post" name="formdeletecb" id="formdeletecb" >
 <div id="result">
 <div class="table-responsive">
-	<table class="table table-bordered">
+	<table class="table table-bordered table-hover">
+	<thead>
 		<tr class="info">
 			<th><input type="checkbox" id="checkedAll" name="checkedAll"></th>
 			<th>STT</th>
@@ -63,17 +64,21 @@ if ($error != "") {
 			<th>Sửa</th>
 			<th>Xóa</th>
 		</tr>
+	</thead>
+	<tbody>
 	<?php
 	if ($data) {
 		$stt = 0;
 		foreach ( $data as $val ) {
+			$price = number_format($val['price']);
+			$price = str_replace(',', '.', $price);
 			$stt ++;
 			echo "<tr class='active'>";
 			echo "<td><input type='checkbox' id='box_$val[id]' name='checkAll[]' value='$val[id]' class='checkSingle'></td>";
 			echo "<td>$stt</td>";
 			echo "<td><img src='$val[image]' width='80' /></td>";
-			echo "<td><a class='editname' href='" . base_url () . "gcms/news/edit/$val[id]'>$val[title]</a></td>";
-			echo "<td>$val[price]</td>";
+			echo "<td><a class='editname' href='" . base_url () . "gcms/products/edit/$val[id]'>$val[title]</a></td>";
+			echo "<td><font color='red'>$price</font></td>";
 			echo "<td>$val[cate_title]</td>";
 			echo "<td>$val[username]</td>";
 			echo "<td>" . date ( "d/m/Y", strtotime ( $val ["created"] ) ) . "</td>";
@@ -83,14 +88,15 @@ if ($error != "") {
 			} else {
 				echo "<td><a class='btn btn-danger active'>Đã khóa</a></td>";
 			}
-			echo "<td><a href='" . base_url () . "gcms/news/edit/$val[id]'><img src='".base_url()."public/gcms/img/edit.png' alt='Edit' title='Edit' /></a></td>";
-			echo "<td><a href='" . base_url () . "gcms/news/delete/$val[id]' onclick='return confirm(\"Bán có muốn xóa bản ghi này không?\");'><img src='".base_url()."public/gcms/img/garbage.png' alt='Delete' title='Delete' /></a></td>";
+			echo "<td><a href='" . base_url () . "gcms/products/edit/$val[id]'><img src='".base_url()."public/gcms/img/edit.png' alt='Edit' title='Edit' /></a></td>";
+			echo "<td><a href='" . base_url () . "gcms/products/delete/$val[id]' onclick='return confirm(\"Bán có muốn xóa bản ghi này không?\");'><img src='".base_url()."public/gcms/img/garbage.png' alt='Delete' title='Delete' /></a></td>";
 			echo "</tr>";
 		}
 	} else {
-		echo "<tr><td align='center' colspan='12'>Không có dữ liệu.</td></tr>";
+		echo "<tr class='active'><td align='center' colspan='12'>Không có dữ liệu.</td></tr>";
 	}
 	?>
+	</tbody>
 </table>
 </div>
 <div class="col-md-4 col-md-push-3 npd" align="center">

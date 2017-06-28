@@ -39,6 +39,7 @@ class AdminController extends MY_Controller {
 						"root" => $this->lang->line ( 'dashboard' ),
 						"img" => base_url () . "public/gcms/img/dashboard.png",
 						"url" => base_url () . $mod . "/home/index",
+						"controller" => "home",
 				),
 				array (
 						"root" => "Quản lý bài viết",
@@ -108,22 +109,22 @@ class AdminController extends MY_Controller {
 								) 
 						) 
 				),
-// 				array (
-// 						"root" => "Giao diện website",
-// 						"img" => base_url () . "public/gcms/img/open-wrench-tool-silhouette.png",
-// 						"url" => base_url () . "gcms/designed/index",
-// 						"controller" => "designed",
-// 						"parent" => array (
-// 								array (
-// 										"parentname" => "Tùy chỉnh",
-// 										"parenturl" => "#" 
-// 								),
-// 								array (
-// 										"parentname" => "Liên kết",
-// 										"parenturl" => "#" 
-// 								) 
-// 						) 
-// 				),
+				array (
+						"root" => "Quảng cáo",
+						"img" => base_url () . "public/gcms/img/open-wrench-tool-silhouette.png",
+						"url" => base_url () . "gcms/images/index",
+						"controller" => "images",
+						"parent" => array (
+								array (
+										"parentname" => "Danh sách",
+										"parenturl" => base_url () . "gcms/images/index",
+								),
+								array (
+										"parentname" => "Thêm mới",
+										"parenturl" => base_url () . "gcms/images/add",
+								),
+						) 
+				),
 				array (
 						"root" => "Quản lý thành viên",
 						"img" => base_url () . "public/gcms/img/group-profile-users.png",
@@ -153,19 +154,38 @@ class AdminController extends MY_Controller {
 						) 
 				),
 				array (
+						"root" => "Liên kết",
+						"img" => base_url () . "public/gcms/img/open-wrench-tool-silhouette.png",
+						"url" => base_url () . "gcms/links/index",
+						"controller" => "links",
+						"parent" => array (
+								array (
+										"parentname" => "Danh sách",
+										"parenturl" => base_url () . "gcms/links/index",
+								),
+								array (
+										"parentname" => "Thêm mới",
+										"parenturl" => base_url () . "gcms/links/add",
+								),
+						)
+				),
+				array (
 						"root" => "Hòm thư liên hệ",
 						"img" => base_url () . "public/gcms/img/envelope.png",
-						"url" => base_url () . "gcms/home/index",
+						"url" => base_url () . "gcms/contact/index",
+						"controller" => "contact",
 				),
 				array (
 						"root" => "Bình luận phản hồi",
 						"img" => base_url () . "public/gcms/img/comment-black-oval-bubble-shape.png",
-						"url" => base_url () . "gcms/home/index",
+						"url" => base_url () . "gcms/comment/index",
+						"controller" => "comment",
 				),
 				array (
-						"root" => "Cài đặt hệ thống",
+						"root" => "Cấu hình hệ thống",
 						"img" => base_url () . "public/gcms/img/settings.png",
-						"url" => base_url () . "gcms/home/index",
+						"url" => base_url () . "gcms/setting/index",
+						"controller" => "setting",
 				) 
 		);
 	}

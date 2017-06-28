@@ -1,5 +1,5 @@
 <div class="col-md-12">
-	<legend>Thêm mới bài viết</legend>
+	<legend>Thêm mới sản phẩm</legend>
 </div>
 <form class="form-horizontal" action="" method="POST" enctype="multipart/form-data">
 	<div class="col-md-8">
@@ -53,8 +53,8 @@ if (validation_errors () != "") {
 			</div>
 		</div>		
 		<div class="form-group">
-			<label for="" class="col-sm-3 control-label">Miêu tả</label>
-			<div class="col-sm-9">
+			<label for="" class="col-sm-12 control-label">Miêu tả</label>
+			<div class="col-sm-12">
 				<textarea style='z-index:99999;' class="form-control" id="description" rows="5" placeholder="Nội dung" name="description"></textarea>
 				<script>
 	                // Replace the <textarea id="editor1"> with a CKEditor
@@ -64,8 +64,8 @@ if (validation_errors () != "") {
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="" class="col-sm-3 control-label">Nội dung</label>
-			<div class="col-sm-9">
+			<label for="" class="col-sm-12 control-label">Nội dung</label>
+			<div class="col-sm-12">
 				<textarea style='z-index:99999;' class="form-control" id="content" rows="5" placeholder="Nội dung" name="content"></textarea>
 				<script>
 	                // Replace the <textarea id="editor1"> with a CKEditor
@@ -97,7 +97,7 @@ if (validation_errors () != "") {
 			<label for="username" class="col-sm-3 control-label">Thể loại</label>
 			<div class="col-sm-9">
 				<label class="radio-inline"> <input type="radio"
-					name="type" id="" value=""> Sản phẩm nổi bật
+					name="type" id="" value="1"> Sản phẩm nổi bật
 				</label>
 			</div>
 		</div>
@@ -119,15 +119,15 @@ if (validation_errors () != "") {
 		<div class="form-group">
 			<label for="username" class="col-sm-3 control-label">Màu sắc</label>
 			<div class="col-sm-9">
-				<label class="checkbox-inline"> <input type="checkbox"
-					id="" value="red" name="properties"> Đỏ
-				</label>
-				<label class="checkbox-inline"> <input type="checkbox"
-					id="" value="black" name="properties"> Đen
-				</label>
-				<label class="checkbox-inline"> <input type="checkbox"
-					id="" value="white" name="properties"> Trắng
-				</label>
+			<?php
+			if($propertiescolor){
+				foreach($propertiescolor as $key => $color){
+					echo '<label class="checkbox-inline"> <input type="checkbox"
+					id="" value="'.$key.'" name="properties[]"> '.$color.'
+					</label>';
+				}
+			}
+			?>
 			</div>
 		</div>
 		<hr>

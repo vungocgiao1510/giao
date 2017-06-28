@@ -45,8 +45,8 @@ if (validation_errors () != "") {
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="" class="col-sm-3 control-label">Nội dung</label>
-			<div class="col-sm-9">
+			<label for="" class="col-sm-12 control-label">Nội dung</label>
+			<div class="col-sm-12">
 				<textarea style='z-index:99999;' class="form-control" id="content" rows="5" placeholder="Nội dung" name="content"></textarea>
 				<script>
 	                // Replace the <textarea id="editor1"> with a CKEditor

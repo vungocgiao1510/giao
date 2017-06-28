@@ -2,6 +2,9 @@ body{
 	font-family: 'Roboto', sans-serif;
 	color:#777;
 }
+.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
+    background-color: #eee;
+}
 .table-responsive {
 	padding-top:20px;
 }

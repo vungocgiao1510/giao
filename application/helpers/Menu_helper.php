@@ -18,9 +18,9 @@ function listMenu($data, $parent = 0, $text = "--", $select = 0) {
 		foreach ( $data as $k => $value ) {
 			if ($value ['cate_parent'] == $parent) {
 				$id = $value ['id'];
-				echo "<tr>";
+				echo "<tr class='active'>";
 				echo "<td>$value[cate_order]</td>";
-				echo "<td style='text-align:left; padding-left: 10px;'>" . $text . $value ['title'] . "</td>";
+				echo "<td style='text-align:left; width:250px; padding-left:70px;'>" . $text . $value ['title'] . "</td>";
 				echo "<td>" . date ( "d/m/Y", strtotime ( $value["created"] ) ) . "</td>";
 				echo "<td>" . date ( "d/m/Y", strtotime ( $value["updated"] ) ) . "</td>";
 				if ($value['active'] == 1) {

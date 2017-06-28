@@ -7,7 +7,11 @@
  * Đổ dữ liệu menu từ mảng ra bên ngoài.
  */
 foreach ( $leftmenu as $val ) {
-	echo '<li><a href="' . $val ['url'] . '"><img
+	echo '<li '; 
+	if(isset ( $val ['controller'] ) && $val ['controller'] == $this->uri->segment ( 2 )){
+		echo 'class="active"';
+	}
+	echo '><a href="' . $val ['url'] . '"><img
 			src="' . $val ['img'] . '" />
 			' . $val ['root'] . '</a>';
 	if (isset ( $val ['parent'] )) {

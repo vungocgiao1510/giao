@@ -16,7 +16,8 @@ if ($error != "") {
 <div class="cls"></div>
 	<div id="result">
 		<div class="table-responsive">
-			<table class="table table-bordered">
+			<table class="table table-bordered table-hover">
+			<thead>
 				<tr class="info">
 					<th>ID</th>
 					<th>Chuyên mục</th>
@@ -26,9 +27,12 @@ if ($error != "") {
 					<th>Sửa</th>
 					<th>Xóa</th>
 				</tr>
+			</thead>
+			<tbody>
 			<?php 
 			listMenu($listmenu);
 			?>
+			</tbody>
 			</table>
 		</div>
 	</div>	
