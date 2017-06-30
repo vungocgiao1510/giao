@@ -1,15 +1,19 @@
 <?php
-function callMenu($data, $parent = 0, $text = "--", $select = 0) {
+function callMenu($data, $parent = 0, $text = "--", $select = 0, $uid) {
 	foreach ( $data as $k => $value ) {
 		if ($value ['cate_parent'] == $parent) {
 			$id = $value ['id'];
 			if ($select != 0 && $id == $select) {
 				echo "<option value='$value[id]' selected='selected'>" . $text . $value ['title'] . "</option>";
 			} else {
-				echo "<option value='$value[id]'>" . $text.  $value ['title'] . "</option>";
+				if($uid == $id){
+					echo "<option value='$value[id]' disabled style='font-weight:bold;'>" . $text.  $value ['title'] . "</option>";
+				} else {
+					echo "<option value='$value[id]'>" . $text.  $value ['title'] . "</option>";
+				}
 			}
 			unset ( $data [$k] );
-			callMenu ( $data, $id, $text . "--", $select );
+			callMenu ( $data, $id, $text . "--", $select, $uid);
 		}
 	}
 }

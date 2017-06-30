@@ -11,8 +11,7 @@
 	rel="stylesheet">
 <link href="<?php echo base_url(); ?>public/gcms/css/responsive.css"
 	rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Roboto"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>

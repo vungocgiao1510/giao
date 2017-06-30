@@ -118,7 +118,7 @@ if (validation_errors () != "") {
 				class="form-control" name="menu" style="height: 300px;">
 				<option value="0" <?php if($data['cate_parent'] == 0) echo "selected"; ?>>Chủ đề gốc</option>
 				<?php 
-				callMenu($menu,0,"--",$data['cate_parent']);
+				callMenu($menu,0,"--",$data['cate_parent'],$data['id']);
 				?>
 			</select>
 		</div>

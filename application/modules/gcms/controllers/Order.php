@@ -1,5 +1,5 @@
 <?php
-class Contact extends AdminController{
+class Order extends AdminController{
 	public function __construct(){
 		parent::__construct();
 	}
@@ -94,8 +94,8 @@ class Contact extends AdminController{
 	}
 	public function delete($id=""){
 		$this->Mcontact->deleteContact ( $id );
-			$this->session->set_flashdata ( "flash_mess", "Hoàn tất thủ tục xóa thành viên." );
-			redirect ( base_url () . "gcms/contact/index" );
+		$this->session->set_flashdata ( "flash_mess", "Hoàn tất thủ tục xóa thành viên." );
+		redirect ( base_url () . "gcms/contact/index" );
 	}
 	public function deleteCB($id=""){
 		if ($this->input->post ( "checkAll" )) {

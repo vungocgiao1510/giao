@@ -81,15 +81,15 @@ class AdminController extends MY_Controller {
 						"parent" => array (
 								array (
 										"parentname" => "Tất cả đơn hàng",
-										"parenturl" => "#" 
+										"parenturl" => base_url () . "gcms/order/index",
 								),
 								array (
 										"parentname" => "Đơn hàng chưa xử lý",
-										"parenturl" => "#" 
+										"parenturl" => base_url () . "gcms/order/inactive",
 								),
 								array (
 										"parentname" => "Đơn hàng đã xử lý",
-										"parenturl" => "#" 
+										"parenturl" => base_url () . "gcms/order/active",
 								) 
 						) 
 				),

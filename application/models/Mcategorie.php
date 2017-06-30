@@ -5,7 +5,6 @@ class Mcategorie extends CI_Model{
 		parent::__construct();
 	}
 	public function listCategorie($lang="vn"){
-		$this->db->where("active",1);
 		$this->db->where("lang",$lang);
 		$this->db->order_by("cate_order","asc");
 		$query = $this->db->get($this->_table);
@@ -53,5 +52,9 @@ class Mcategorie extends CI_Model{
 	public function deleteCategorie($id){
 		$this->db->where("id",$id);
 		$this->db->delete($this->_table);
+	}
+	public function countAll($lang="vn"){
+		$this->db->where("lang",$lang);
+		return $this->db->count_all($this->_table);
 	}
 }

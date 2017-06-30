@@ -53,11 +53,11 @@ if ($error != "") {
 		<tr class="info">
 			<th><input type="checkbox" id="checkedAll" name="checkedAll"></th>
 			<th>STT</th>
-			<th>Hình ảnh</th>
-			<th>Tiêu đề</th>
-			<th>Thể loại</th>
-			<th>Ngày tạo</th>
-			<th>Ngày sửa</th>
+			<th>Họ tên</th>
+			<th>Email</th>
+			<th>Điện thoại</th>
+			<th>Địa chỉ</th>
+			<th>Ngày gửi</th>
 			<th>Trạng thái</th>
 			<th>Sửa</th>
 			<th>Xóa</th>

@@ -1,6 +1,15 @@
 body{
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Open Sans', sans-serif;
 	color:#777;
+}
+#homecount a{
+	width:100%;
+	height:200px;
+	margin-bottom:20px;
+}
+#homecount p{
+	font-size:30px;
+	margin-top:30px;
 }
 .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
     background-color: #eee;
@@ -60,7 +69,7 @@ body{
 	border:1px solid #eee;
 }
 #leftmenu ul li a{
-	color:#777;
+	color:#333;
 }
 #leftmenu ul li {
 	list-style: none;

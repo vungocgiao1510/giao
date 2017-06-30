@@ -1,4 +1,4 @@
-<legend>Danh sách hình ảnh</legend>
+<legend>Danh sách liên kết</legend>
 <?php
 if ($success != ""){
 	echo '<div class="alert alert-success" role="alert">' . $success. '</div>';
@@ -9,7 +9,7 @@ if ($error != "") {
 ?>
 <div class="row" style="margin-top:-15px;">
 	<div class="col-md-1" style="margin-top: 15px;">
-		<a href="<?php echo base_url()."gcms/images/add"; ?>" class="btn btn-primary active">Thêm mới</a>
+		<a href="<?php echo base_url()."gcms/links/add"; ?>" class="btn btn-primary active">Thêm mới</a>
 	</div>
 	<div class="col-md-3">
 		<form action="" method="POST">
@@ -45,7 +45,7 @@ if ($error != "") {
 
 </div>
 <div class="cls"></div>
-<form action="<?php echo base_url()."gcms/images/deletecb" ?>" method="post" name="formdeletecb" id="formdeletecb" >
+<form action="<?php echo base_url()."gcms/links/deletecb" ?>" method="post" name="formdeletecb" id="formdeletecb" >
 <div id="result">
 <div class="table-responsive">
 	<table class="table table-bordered table-hover">
@@ -53,9 +53,9 @@ if ($error != "") {
 		<tr class="info">
 			<th><input type="checkbox" id="checkedAll" name="checkedAll"></th>
 			<th>STT</th>
-			<th>Hình ảnh</th>
-			<th>Tiêu đề</th>
-			<th>Thể loại</th>
+			<th>Tên liên kết</th>
+			<th>Liên kết</th>
+			<th>Vị trí</th>
 			<th>Ngày tạo</th>
 			<th>Ngày sửa</th>
 			<th>Trạng thái</th>
@@ -72,8 +72,8 @@ if ($error != "") {
 			echo "<tr class='active'>";
 			echo "<td><input type='checkbox' id='box_$val[id]' name='checkAll[]' value='$val[id]' class='checkSingle'></td>";
 			echo "<td>$stt</td>";
-			echo "<td><img src='$val[image]' width='80' /></td>";
 			echo "<td><a class='editname' href='" . base_url () . "gcms/news/edit/$val[id]'>$val[title]</a></td>";
+			echo "<td>$val[link]</td>";
 			foreach($properties as $key => $propertie){
 				if($key == $val['properties']){
 					echo "<td>$propertie</td>";
@@ -86,8 +86,8 @@ if ($error != "") {
 			} else {
 				echo "<td><a class='btn btn-danger active'>Đã khóa</a></td>";
 			}
-			echo "<td><a href='" . base_url () . "gcms/images/edit/$val[id]'><img src='".base_url()."public/gcms/img/edit.png' alt='Edit' title='Edit' /></a></td>";
-			echo "<td><a href='" . base_url () . "gcms/images/delete/$val[id]' onclick='return confirm(\"Bán có muốn xóa bản ghi này không?\");'><img src='".base_url()."public/gcms/img/garbage.png' alt='Delete' title='Delete' /></a></td>";
+			echo "<td><a href='" . base_url () . "gcms/links/edit/$val[id]'><img src='".base_url()."public/gcms/img/edit.png' alt='Edit' title='Edit' /></a></td>";
+			echo "<td><a href='" . base_url () . "gcms/links/delete/$val[id]' onclick='return confirm(\"Bán có muốn xóa bản ghi này không?\");'><img src='".base_url()."public/gcms/img/garbage.png' alt='Delete' title='Delete' /></a></td>";
 			echo "</tr>";
 		}
 	} else {
