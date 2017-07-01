@@ -1,5 +1,5 @@
 <?php
-function callMenu($data, $parent = 0, $text = "--", $select = 0, $uid) {
+function callMenu($data, $parent = 0, $text = "--", $select = 0, $uid="") {
 	foreach ( $data as $k => $value ) {
 		if ($value ['cate_parent'] == $parent) {
 			$id = $value ['id'];

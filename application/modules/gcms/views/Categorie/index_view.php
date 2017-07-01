@@ -30,7 +30,7 @@ if ($error != "") {
 			</thead>
 			<tbody>
 			<?php 
-			listMenu($listmenu);
+				listMenu($listmenu);
 			?>
 			</tbody>
 			</table>

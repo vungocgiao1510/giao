@@ -9,6 +9,7 @@ class Categorie extends AdminController {
 		$this->_data ['error'] = $this->session->flashdata ( "flash_error" );
 		$this->_data ['success'] = $this->session->flashdata ( "flash_mess" );
 		$this->_data ['data'] = "";
+		$this->_data ['listmenu'] = "";
 		if ($this->Mcategorie->listCategorie () != FALSE) {
 			$this->_data ['listmenu'] = $this->Mcategorie->listCategorie ($this->session->userdata('lang'));
 		}
@@ -43,6 +44,7 @@ class Categorie extends AdminController {
 					"image" => $this->input->post ( "image" ),
 					"service" => $this->input->post ( "service" ),
 					"cate_parent" => $this->input->post ( "menu" ),
+					"check_parent" => $this->input->post ( "check_parent" ),
 					"created" => date ( "Y-m-d" ),
 					"active" => 1 
 			);
@@ -85,6 +87,7 @@ class Categorie extends AdminController {
 					"description" => $this->input->post ( "description" ),
 					"service" => $this->input->post ( "service" ),
 					"cate_parent" => $this->input->post ( "menu" ),
+					"check_parent" => $this->input->post ( "check_parent" ),
 					"updated" => date ( "Y-m-d" ),
 					"active" => $this->input->post ( "active" ) 
 			);

@@ -86,15 +86,15 @@ if (validation_errors () != "") {
 <!-- 			</div> -->
 <!-- 		</div> -->
 
-<!-- 		<div class="form-group"> -->
-<!-- 			<label for="username" class="col-sm-3 control-label">Trạng thái hiển -->
-<!-- 				thị</label> -->
-<!-- 			<div class="col-sm-9"> -->
-<!-- 				<label class="checkbox-inline"> <input type="checkbox" -->
-<!-- 					id="" value=""> Hiển thị tại trang chủ -->
-<!-- 				</label> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
+		<div class="form-group">
+			<label for="username" class="col-sm-3 control-label">Trạng thái hiển
+				thị</label>
+			<div class="col-sm-9">
+				<label class="checkbox-inline"> <input type="checkbox"
+					id="" value="1" name="check_parent" <?php if($data['check_parent']==1) echo "checked='checked'"; ?>> Chứa chuyên mục con
+				</label>
+			</div>
+		</div>
 		<hr>
 		<div class="form-group">
 			<div class="col-sm-offset-3 col-sm-11">
