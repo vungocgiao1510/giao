@@ -78,7 +78,7 @@ if (validation_errors () != "") {
 			<label for="username" class="col-sm-3 control-label">Thể loại</label>
 			<div class="col-sm-9">
 				<label class="radio-inline"> <input type="radio"
-					name="type" id="" value=""> Bài viết nổi bật
+					name="type" id="" value="1"> Bài viết nổi bật
 				</label>
 			</div>
 		</div>

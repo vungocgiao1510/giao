@@ -22,6 +22,7 @@ class Categorie extends AdminController {
 		$this->_data ['data'] = "";
 		$data_insert ['image'] = "";
 		$this->_data ['error'] = "";
+		$data_insert['check_parent'] = "";
 		// Hiển thị danh sách chuyên mục qua select box.
 		if ($this->Mcategorie->listCategorie () != FALSE) {
 			$this->_data ['menu'] = $this->Mcategorie->listCategorie ($this->session->userdata('lang'));
@@ -39,15 +40,19 @@ class Categorie extends AdminController {
 					"title" => $this->input->post ( "title" ),
 					"linkseo" => unicode ( $this->input->post ( "link" ) ),
 					"titleseo" => $this->input->post ( "titleseo" ),
+					"keywords" => $this->input->post ( "keywords" ),
 					"cate_order" => $this->input->post ( "order" ),
 					"description" => $this->input->post ( "description" ),
 					"image" => $this->input->post ( "image" ),
 					"service" => $this->input->post ( "service" ),
 					"cate_parent" => $this->input->post ( "menu" ),
-					"check_parent" => $this->input->post ( "check_parent" ),
 					"created" => date ( "Y-m-d" ),
-					"active" => 1 
+					"active" => 1,
+					"lang" => $this->session->userdata("lang"),
 			);
+			if($this->input->post ( "check_parent" )){
+				$data_insert['check_parent'] = $this->input->post ( "check_parent" );
+			}
 			// Insert dữ liệu
 			$this->Mcategorie->insertCategorie ( $data_insert );
 			// Flash mess thông báo insert thành công
@@ -65,6 +70,7 @@ class Categorie extends AdminController {
 		$data_insert ['image'] = "";
 		$this->_data ['error'] = "";
 		$data_update['image'] = "";
+		$data_insert['check_parent'] = "";
 		// Hiển thị danh sách chuyên mục qua select box.
 		if ($this->Mcategorie->listCategorie () != FALSE) {
 			$this->_data ['menu'] = $this->Mcategorie->listCategorie ($this->session->userdata('lang'));
@@ -83,16 +89,19 @@ class Categorie extends AdminController {
 					"title" => $this->input->post ( "title" ),
 					"linkseo" => unicode ( $this->input->post ( "link" ) ),
 					"titleseo" => $this->input->post ( "titleseo" ),
+					"keywords" => $this->input->post ( "keywords" ),
 					"cate_order" => $this->input->post ( "order" ),
 					"description" => $this->input->post ( "description" ),
 					"service" => $this->input->post ( "service" ),
 					"cate_parent" => $this->input->post ( "menu" ),
-					"check_parent" => $this->input->post ( "check_parent" ),
 					"updated" => date ( "Y-m-d" ),
 					"active" => $this->input->post ( "active" ) 
 			);
 			if($this->input->post ( "image" ) != ""){
 				$data_update['image'] = $this->input->post ( "image" );
+			}
+			if($this->input->post ( "check_parent" )){
+				$data_insert['check_parent'] = $this->input->post ( "check_parent" );
 			}
 			// Insert dữ liệu
 			$this->Mcategorie->updateCategorie ( $id, $data_update );
@@ -107,5 +116,18 @@ class Categorie extends AdminController {
 		$this->Mcategorie->deleteCategorie($id);
 		$this->session->set_flashdata ( "flash_mess", "Hoàn tất thủ tục xóa chuyên mục." );
 		redirect ( base_url () . "gcms/categorie/index" );
+	}
+	public function deleteCB() {
+		if ($this->input->post ( "checkAll" )) {
+			foreach ( $this->input->post ( "checkAll" ) as $del_id ) {
+				$del_id = ( int ) $del_id;
+				$this->Mcategorie->deleteCategorie( $del_id );
+			}
+			$this->session->set_flashdata ( "flash_mess", "Hoàn tất thủ tục xóa bài viết." );
+			redirect ( base_url () . "gcms/categorie/index" );
+		} else {
+			$this->session->set_flashdata ( "flash_error", "Bạn chưa chọn chuyên mục cần xóa." );
+			redirect ( base_url () . "gcms/categorie/index" );
+		}
 	}
 }

@@ -1,0 +1,51 @@
+@media screen and (max-width: 475px){
+	article .container{
+		padding-right:0px;
+		padding-left:0px;
+	}
+	article .col-md-3{
+		padding-right:0px;
+	}
+	.product{
+		padding:5px;
+	}
+	.news img{
+		height:150px;
+		width: 100%;
+	}
+}
+@media screen and (max-width: 767px){
+	article .col-md-12{
+		padding-right:0px;
+		padding-left:0px;
+	}
+	.sanphamnb .product img{
+		height:auto;
+	}
+	.tintuc img{
+		height:auto;
+	}
+	.tintuc h2.title{
+		margin-top:10px;
+	}
+}
+@media screen and (min-width: 1000px){
+	#slideshow img{
+		height:500px;
+		width:100%;
+	}
+	#banner img{
+		height:400px;
+		width: 100%;
+	}
+}
+
+@media screen and (max-width: 992px){
+	.detailproduct ul.imgclick li{
+		float:left;
+	}
+	.detailproduct .tab-content img{
+		max-width: 100%;
+		height:auto;
+	}
+}

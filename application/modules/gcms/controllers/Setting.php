@@ -10,7 +10,7 @@ class Setting extends AdminController{
 		$this->_data['success'] = $this->session->flashdata ( "flash_mess");
 		// Hiển thị thông tin member khi get được ID.
 // 		$this->_data ['data'] = $this->Msetting->getUserById ( $id );
-		$this->_data['data'] = $this->Msetting->getSettingById();
+		$this->_data['data'] = $this->Msetting->getSettingById($this->session->userdata['lang']);
 		$this->form_validation->set_message ( 'required', '{field} không được để trống.' );
 		$this->form_validation->set_message ( 'min_length', '{field} phải nhiều hơn 5 ký tự.' );
 		$this->form_validation->set_message ( 'max_length', '{field} phải nhỏ hơn 14 ký tự.' );
@@ -31,9 +31,11 @@ class Setting extends AdminController{
 					"lang" => $this->session->userdata("lang"),
 			);
 			// Sửa liên hệ vào trong CSDL.
-			$this->Msetting->updateSetting ( $data_update );
+
+			$this->Msetting->updateSetting( $data_update, $this->session->userdata['lang'] );
 			// Flashdata báo sửa thành công.
 			$this->session->set_flashdata ( "flash_mess", "Cấu hình thành công." );
+			redirect(base_url(uri_string()));
 		}
 		$this->load->view ( $this->_data ['path'], $this->_data );
 	}

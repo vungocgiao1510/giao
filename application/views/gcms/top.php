@@ -16,7 +16,7 @@
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li><a href="#"><img src="<?php echo base_url(); ?>public/gcms/img/home.png" alt="home" title="" /> Trang
+				<li><a target="_blank" href="<?php echo base_url().$this->session->userdata['lang']; ?>"><img src="<?php echo base_url(); ?>public/gcms/img/home.png" alt="home" title="" /> Trang
 						chủ <span class="sr-only">(current)</span></a></li>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -36,23 +36,18 @@
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false"><img src="<?php echo base_url(); ?>public/gcms/img/plane.png" alt="plane" title="" />
 						Đơn hàng mới <span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="#">Nguyễn Văn Nam - nguyenvannam@gmail.com</a></li>
-						<li role="separator" class="divider"></li>
-						<li><a href="#">Bùi Thị Cúc - buithicuc@gmail.com</a></li>
-						<li role="separator" class="divider"></li>
-						<li><a href="#">Trần Nam Anh - trannamanh@gmail.com</a></li>
-						<li role="separator" class="divider"></li>
-						<li><a href="#">Nguyễn Xuân Lộc - nguyenxuanloc@gmail.com</a></li>
-						<li role="separator" class="divider"></li>
-						<li><a href="#">Trần Minh Đức - tranminhduc@gmail.com</a></li>
-						<li role="separator" class="divider"></li>
-						<li><a href="#">Tạ Minh Nhật - taminhnhat@gmail.com</a></li>
-						<li role="separator" class="divider"></li>
-						<li><a href="#">Nguyễn Thùy Linh - nguyenthuylinh@gmail.com</a></li>
-						<li role="separator" class="divider"></li>
-						<li style="float: right"><a href="#">Xem thêm...</a></li>
-					</ul></li>
+						<ul class="dropdown-menu">
+						<?php 
+						if($listOrderOnTop){
+							foreach($listOrderOnTop as $value){
+								echo '<li><a href="'.base_url()."gcms/order/view/".$value['id'].'">'.$value['fullname'].' - '.$value['email'].'</a></li>
+						<li role="separator" class="divider"></li>';
+							}
+						}
+						?>
+						<li style="float: right"><a href="<?php echo base_url()."gcms/order/index" ?>">Xem toàn bộ...</a></li>
+						</ul>
+						</li>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false"><img
@@ -60,21 +55,15 @@
 						alt="speech-bubbles-comment-option" title="" /> Thư mới <span
 						class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="#">Nguyễn Văn Nam - nguyenvannam@gmail.com</a></li>
-						<li role="separator" class="divider"></li>
-						<li><a href="#">Bùi Thị Cúc - buithicuc@gmail.com</a></li>
-						<li role="separator" class="divider"></li>
-						<li><a href="#">Trần Nam Anh - trannamanh@gmail.com</a></li>
-						<li role="separator" class="divider"></li>
-						<li><a href="#">Nguyễn Xuân Lộc - nguyenxuanloc@gmail.com</a></li>
-						<li role="separator" class="divider"></li>
-						<li><a href="#">Trần Minh Đức - tranminhduc@gmail.com</a></li>
-						<li role="separator" class="divider"></li>
-						<li><a href="#">Tạ Minh Nhật - taminhnhat@gmail.com</a></li>
-						<li role="separator" class="divider"></li>
-						<li><a href="#">Nguyễn Thùy Linh - nguyenthuylinh@gmail.com</a></li>
-						<li role="separator" class="divider"></li>
-						<li style="float: right"><a href="#">Xem thêm...</a></li>
+						<?php 
+						if($listContactOnTop){
+							foreach($listContactOnTop as $value){
+								echo '<li><a href="'.base_url()."gcms/contact/view/".$value['id'].'">'.$value['name'].' - '.$value['email'].'</a></li>
+						<li role="separator" class="divider"></li>';
+							}
+						}
+						?>
+						<li style="float: right"><a href="<?php echo base_url()."gcms/contact/index" ?>">Xem toàn bộ...</a></li>
 					</ul></li>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"

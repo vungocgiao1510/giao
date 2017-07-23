@@ -54,7 +54,7 @@ class News extends AdminController{
 		}
 		$locds = $this->session->userdata ( "locds" );
 		$this->_data ['locds'] = $locds;
-		
+
 		if ($this->input->get ( "keyword" )) {
 			// $ses_search = array("keyword" => $this->input->get("keyword"));
 			// $this->session->set_userdata($ses_search);
@@ -90,7 +90,7 @@ class News extends AdminController{
 		$this->form_validation->set_rules ( 'description', 'Mô tả', 'required|min_length[4]');
 		$this->form_validation->set_rules ( 'image', 'Hình ảnh', 'required|min_length[4]');
 		$this->form_validation->set_rules ( 'menu', 'Chuyên mục', 'required');
-		
+
 		// 		$this->form_validation->set_rules ( 'group', 'Nhóm', 'required' );
 		if ($this->form_validation->run () == TRUE) {
 			// Mảng chứa dữ liệu cần insert
@@ -142,7 +142,7 @@ class News extends AdminController{
 		$this->form_validation->set_rules ( 'keyword', 'Từ khóa', 'required|min_length[4]');
 		$this->form_validation->set_rules ( 'description', 'Mô tả', 'required|min_length[4]');
 		$this->form_validation->set_rules ( 'menu', 'Chuyên mục', 'required');
-		
+
 		// 		$this->form_validation->set_rules ( 'group', 'Nhóm', 'required' );
 		if ($this->form_validation->run () == TRUE) {
 			// Mảng chứa dữ liệu cần update

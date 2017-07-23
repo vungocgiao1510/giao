@@ -14,11 +14,13 @@ if ($error != "") {
 
 </div>
 <div class="cls"></div>
+<form action="<?php echo base_url()."gcms/categorie/deletecb" ?>" method="post" name="formdeletecb" id="formdeletecb" >
 	<div id="result">
 		<div class="table-responsive">
 			<table class="table table-bordered table-hover">
 			<thead>
 				<tr class="info">
+					<th><input type="checkbox" id="checkedAll" name="checkedAll"></th>
 					<th>ID</th>
 					<th>Chuyên mục</th>
 					<th>Ngày tạo</th>
@@ -36,3 +38,7 @@ if ($error != "") {
 			</table>
 		</div>
 	</div>	
+<div align="right">
+<button type="submit" name="deletecb" class='btn btn-default'><img src='<?php echo base_url()  ?>public/gcms/img/garbage.png' alt='Delete All' title='Delete All' /></button>
+</form>
+</div>

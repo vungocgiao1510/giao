@@ -95,9 +95,28 @@ if (validation_errors () != "") {
 		</div>
 		<div class="form-group">
 			<label for="username" class="col-sm-3 control-label">Thể loại</label>
-			<div class="col-sm-9">
+			<div class="col-sm-3">
 				<label class="radio-inline"> <input type="radio"
 					name="type" id="" value="1"> Sản phẩm nổi bật
+				</label>
+			</div>
+			<div class="col-sm-3">
+				<label class="radio-inline"> <input type="radio"
+					name="type1" id="" value="0"> Không hiển thị
+				</label>
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label for="username" class="col-sm-3 control-label">Hiển thị</label>
+			<div class="col-sm-3">
+				<label class="radio-inline"> <input type="radio"
+					name="type1" id="" value="1"> Sản phẩm bán chạy
+				</label>
+			</div>
+			<div class="col-sm-3">
+				<label class="radio-inline"> <input type="radio"
+					name="type1" id="" value="0"> Không hiển thị
 				</label>
 			</div>
 		</div>

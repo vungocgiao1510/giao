@@ -59,6 +59,35 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['vn'] = 'home/index/$1';
 $route['en'] = 'home/index/$1';
+
+$route['vn/tim-kiem'] = 'home/search/$1';
+$route['en/tim-kiem'] = 'home/search/$1';
+
+
+$route['vn/gio-hang'] = 'home/cart/$1';
+$route['en/gio-hang'] = 'home/cart/$1';
+
+$route['vn/dat-hang'] = 'home/order/$1';
+$route['en/dat-hang'] = 'home/order/$1';
+
+$route['vn/success'] = 'home/success/$1';
+$route['en/success'] = 'home/success/$1';
+
+
+// chuyên mục
+$route['vn/(:any)'] = 'home/category/$1';
+$route['en/(:any)'] = 'home/category/$1';
+// phân trang
+$route['vn/(:any)/(:num)'] = 'home/category/$1/$2';
+$route['en/(:any)/(:num)'] = 'home/category/$1/$2';
+// detail news
+$route['vn/(:any)/(:any)-n/(:num)'] = 'home/detailnews/$1/$2/$3';
+$route['en/(:any)/(:any)-n/(:num)'] = 'home/detailnews/$1/$2/$3';
+// detail products
+$route['vn/(:any)/(:any)-p/(:num)'] = 'home/detailproducts/$1/$2/$3';
+$route['en/(:any)/(:any)-p/(:num)'] = 'home/detailproducts/$1/$2/$3';
+
+
 /* 
  * GCMS Route.
 */

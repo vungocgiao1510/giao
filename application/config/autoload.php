@@ -62,7 +62,8 @@ $autoload ['libraries'] = array (
 		'session',
 		'database',
 		'form_validation',
-		'pagination' 
+		'pagination',
+		'cart',
 );
 
 /*
@@ -149,4 +150,5 @@ $autoload ['model'] = array (
 		"Msetting",
 		"Mimages",
 		"Mlinks",
+		"Morder",
 );

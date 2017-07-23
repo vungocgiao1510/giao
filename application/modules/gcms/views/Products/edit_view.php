@@ -100,9 +100,27 @@ if (validation_errors () != "") {
 		</div>
 		<div class="form-group">
 			<label for="username" class="col-sm-3 control-label">Thể loại</label>
-			<div class="col-sm-9">
+			<div class="col-sm-3">
 				<label class="radio-inline"> <input type="radio"
 					name="type" id="" value="1" <?php if($data['type'] == 1) echo "checked='checked'"; ?>> Bài viết nổi bật
+				</label>
+			</div>
+			<div class="col-sm-3">
+				<label class="radio-inline"> <input type="radio"
+					name="type" id="" value="2" <?php if($data['type'] == 2) echo "checked='checked'"; ?>> Không hiển thị
+				</label>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="username" class="col-sm-3 control-label">Hiển thị</label>
+			<div class="col-sm-3">
+				<label class="radio-inline"> <input type="radio"
+					name="type1" id="" value="1" <?php if($data['type1'] == 1) echo "checked='checked'"; ?>> Sản phẩm bán chạy
+				</label>
+			</div>
+			<div class="col-sm-3">
+				<label class="radio-inline"> <input type="radio"
+					name="type1" id="" value="2" <?php if($data['type1'] == 2) echo "checked='checked'"; ?>> Không hiển thị
 				</label>
 			</div>
 		</div>

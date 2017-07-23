@@ -31,6 +31,9 @@ class AdminController extends MY_Controller {
 		$this->load->helper("Seourl");
 		// Helper cho menu đệ quy.
 		$this->load->helper("Menu");
+		// Show danh sách đơn hàng.
+		$this->_data['listOrderOnTop'] = $this->Morder->listOrderOnTop($lang);
+		$this->_data['listContactOnTop'] = $this->Mcontact->listContactOnTop($lang);
 		/*
 		 * Mảng menu trái được gọi ra giúp dễ tùy biến hơn thay vì sử dụng HTML hiển thị.
 		 */
@@ -175,12 +178,12 @@ class AdminController extends MY_Controller {
 						"url" => base_url () . "gcms/contact/index",
 						"controller" => "contact",
 				),
-				array (
-						"root" => "Bình luận phản hồi",
-						"img" => base_url () . "public/gcms/img/comment-black-oval-bubble-shape.png",
-						"url" => base_url () . "gcms/comment/index",
-						"controller" => "comment",
-				),
+// 				array (
+// 						"root" => "Bình luận phản hồi",
+// 						"img" => base_url () . "public/gcms/img/comment-black-oval-bubble-shape.png",
+// 						"url" => base_url () . "gcms/comment/index",
+// 						"controller" => "comment",
+// 				),
 				array (
 						"root" => "Cấu hình hệ thống",
 						"img" => base_url () . "public/gcms/img/settings.png",

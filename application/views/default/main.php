@@ -1,322 +1,179 @@
-<div class="container">
-	<div class="shoes-grid">
-		<a href="single.html">
-			<div class="wrap-in">
-				<div class="wmuSlider example1 slide-grid">
-					<div class="wmuSliderWrapper">
-						<article style="position: absolute; width: 100%; opacity: 0;">
-							<div class="banner-matter">
-								<div class="col-md-5 banner-bag">
-									<img class="img-responsive "
-										src="<?php echo base_url() ."public/default/"?>images/bag.jpg"
-										alt=" " />
-								</div>
-								<div class="col-md-7 banner-off">
-									<h2>FLAT 50% 0FF</h2>
-									<label>FOR ALL PURCHASE <b>VALUE</b></label>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-										sed do eiusmod tempor incididunt ut labore et</p>
-									<span class="on-get">GET NOW</span>
-								</div>
+<div id="slideshow" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#slideshow" data-slide-to="0" class="active"></li>
+    <li data-target="#slideshow" data-slide-to="1"></li>
+    <li data-target="#slideshow" data-slide-to="2"></li>
+  </ol>
 
-								<div class="clearfix"></div>
-							</div>
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+  <?php 
+    if($slide){
+      $stt=0;
+      foreach($slide as $item){
+          $stt++;
+          $link = ($item['link'] != 0) ? $item['link'] : '#';
+          // echo $link;
+          if($stt == 1){
+            echo '<div class="item active">';
+          } else {
+          echo '<div class="item">';
+          }
+            echo '<a href="'.$link.'"><img src="'.$item['image'].'" alt="..." class="img-responsive"></a>
+            <div class="carousel-caption">
+            </div>
+            </div>';
+        }
+    }
+  ?>
 
-						</article>
-						<article style="position: absolute; width: 100%; opacity: 0;">
-							<div class="banner-matter">
-								<div class="col-md-5 banner-bag">
-									<img class="img-responsive "
-										src="<?php echo base_url() ."public/default/"?>images/bag1.jpg"
-										alt=" " />
-								</div>
-								<div class="col-md-7 banner-off">
-									<h2>FLAT 50% 0FF</h2>
-									<label>FOR ALL PURCHASE <b>VALUE</b></label>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-										sed do eiusmod tempor incididunt ut labore et</p>
-									<span class="on-get">GET NOW</span>
-								</div>
+  </div>
 
-								<div class="clearfix"></div>
-							</div>
-
-						</article>
-						<article style="position: absolute; width: 100%; opacity: 0;">
-							<div class="banner-matter">
-								<div class="col-md-5 banner-bag">
-									<img class="img-responsive "
-										src="<?php echo base_url() ."public/default/"?>images/bag.jpg"
-										alt=" " />
-								</div>
-								<div class="col-md-7 banner-off">
-									<h2>FLAT 50% 0FF</h2>
-									<label>FOR ALL PURCHASE <b>VALUE</b></label>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-										sed do eiusmod tempor incididunt ut labore et</p>
-									<span class="on-get">GET NOW</span>
-								</div>
-
-								<div class="clearfix"></div>
-							</div>
-
-						</article>
-
-					</div>
-		
-		</a>
-		<ul class="wmuSliderPagination">
-			<li><a href="#" class="">0</a></li>
-			<li><a href="#" class="">1</a></li>
-			<li><a href="#" class="">2</a></li>
-		</ul>
-		<script
-			src="<?php echo base_url() ."public/default/"?>js/jquery.wmuSlider.js"></script>
-		<script>
-	       			$('.example1').wmuSlider();         
-	   		     </script>
-	</div>
+  <!-- Controls -->
+  <a class="left carousel-control" href="#slideshow" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#slideshow" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
 </div>
-</a>
-<!---->
-<div class="shoes-grid-left">
-	<a href="single.html">
-		<div class="col-md-6 con-sed-grid">
 
-			<div class=" elit-grid">
+<article>
+ <div class="container">
+  <div class="col-md-12">
+  <div class="title"><h2 align="center"><?php echo $this->lang->line("latestproduct"); ?></h2></div>
+  </div>
+  
+  <?php 
+//   echo "<pre>";
+//   print_r($productnews);
+//   echo "</pre>";
+	if($productnews){
+		foreach($productnews as $value){
+			$promotion = number_format($value['promotion']);
+			$promotion = str_replace(",", ".", $promotion);
+			$price = number_format($value['price']);
+			$price= str_replace(",", ".", $price);
+			$sales = ($value['promotion'] - $value['price']) * 100;
+			$sale = ceil($sales / $value['promotion']);
+			echo '<div class="col-md-3 col-sm-6 col-xs-6">
+				    <div class="product">
+				          <a href="'.base_url().$lang.'/'.$value['cate_linkseo'].'/'.$value['linkseo'].'-p/'.$value['id'].'">
+				          <img class="img-responsive" src="'.$value['image'].'" />
+				          <h3 class="ptitle">'.$value['title'].'</h3>
+				          <p class="promotion">Giá cũ: <strike>'.$promotion.'</strike></p>
+				          <p class="price">Giá hiện tại: <font color="red">'.$price.'</font></p>';
+			if($value['promotion']){
+				echo '<div class="sale">
+				            <span>
+				              '.$sale.'%
+				            </span>
+				          </span>    
+				          </div></a>';
+			}
+					
+			echo '</div></div>';
+		}
+	}
+  ?>
+    
 
-				<h4>consectetur elit</h4>
-				<label>FOR ALL PURCHASE VALUE</label>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,</p>
-				<span class="on-get">GET NOW</span>
-			</div>
-			<img class="img-responsive shoe-left"
-				src="<?php echo base_url() ."public/default/"?>images/sh.jpg"
-				alt=" " />
+  <!-- End Sản phẩm mới  -->
 
-			<div class="clearfix"></div>
+  <!-- Chuyên mục hiển thị -->
 
-		</div>
-	</a> <a href="single.html">
-		<div class="col-md-6 con-sed-grid sed-left-top">
-			<div class=" elit-grid">
-				<h4>consectetur elit</h4>
-				<label>FOR ALL PURCHASE VALUE</label>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,</p>
-				<span class="on-get">GET NOW</span>
-			</div>
-			<img class="img-responsive shoe-left"
-				src="<?php echo base_url() ."public/default/"?>images/wa.jpg"
-				alt=" " />
+    <div id="showcate">
+		<?php
+		if($qc){
+			$i = 0;
+			foreach($qc as $value){
+				$link = ($value['link'] != "0") ? $value['link'] : "#";
+				$i++;
+				echo '<div class="';
+				if($i==1 || $i==4){
+					echo 'col-md-8 col-sm-6 col-xs-12';
+				} else {
+					echo 'col-md-4 col-sm-6 col-xs-12';
+				}
+				if($i==2 || $i ==4){
+					echo ' showcate1';
+				} else {
+					echo ' showcate';
+				}
+				echo '">
+				<a href="'.$link.'">
+          <img src="'.$value['image'].'" alt="'.$value['title'].'" title="'.$value['title'].'" class="img-responsive">
+        </a>
+        </div>';
+			}
+		}
+		?>
+    </div>
+    <div class="cls"></div>
 
-			<div class="clearfix"></div>
-		</div>
-	</a>
-</div>
-<div class="products">
-	<h5 class="latest-product">LATEST PRODUCTS</h5>
-	<a class="view-all" href="product.html">VIEW ALL<span> </span></a>
-</div>
-<div class="product-left">
-	<div class="col-md-4 chain-grid">
-		<a href="single.html"><img class="img-responsive chain"
-			src="<?php echo base_url() ."public/default/"?>images/ch.jpg" alt=" " /></a>
-		<span class="star"> </span>
-		<div class="grid-chain-bottom">
-			<h6>
-				<a href="single.html">Lorem ipsum dolor</a>
-			</h6>
-			<div class="star-price">
-				<div class="dolor-grid">
-					<span class="actual">300$</span> <span class="reducedfrom">400$</span>
-					<span class="rating"> <input type="radio" class="rating-input"
-						id="rating-input-1-5" name="rating-input-1"> <label
-						for="rating-input-1-5" class="rating-star1"> </label> <input
-						type="radio" class="rating-input" id="rating-input-1-4"
-						name="rating-input-1"> <label for="rating-input-1-4"
-						class="rating-star1"> </label> <input type="radio"
-						class="rating-input" id="rating-input-1-3" name="rating-input-1">
-						<label for="rating-input-1-3" class="rating-star"> </label> <input
-						type="radio" class="rating-input" id="rating-input-1-2"
-						name="rating-input-1"> <label for="rating-input-1-2"
-						class="rating-star"> </label> <input type="radio"
-						class="rating-input" id="rating-input-1-1" name="rating-input-1">
-						<label for="rating-input-1-1" class="rating-star"> </label>
-					</span>
-				</div>
-				<a class="now-get get-cart" href="#">ADD TO CART</a>
-				<div class="clearfix"></div>
-			</div>
-		</div>
-	</div>
-	<div class="col-md-4 chain-grid">
-		<a href="single.html"><img class="img-responsive chain"
-			src="<?php echo base_url() ."public/default/"?>images/ba.jpg" alt=" " /></a>
-		<span class="star"> </span>
-		<div class="grid-chain-bottom">
-			<h6>
-				<a href="single.html">Lorem ipsum dolor</a>
-			</h6>
-			<div class="star-price">
-				<div class="dolor-grid">
-					<span class="actual">300$</span> <span class="reducedfrom">400$</span>
-					<span class="rating"> <input type="radio" class="rating-input"
-						id="rating-input-1-5" name="rating-input-1"> <label
-						for="rating-input-1-5" class="rating-star1"> </label> <input
-						type="radio" class="rating-input" id="rating-input-1-4"
-						name="rating-input-1"> <label for="rating-input-1-4"
-						class="rating-star1"> </label> <input type="radio"
-						class="rating-input" id="rating-input-1-3" name="rating-input-1">
-						<label for="rating-input-1-3" class="rating-star"> </label> <input
-						type="radio" class="rating-input" id="rating-input-1-2"
-						name="rating-input-1"> <label for="rating-input-1-2"
-						class="rating-star"> </label> <input type="radio"
-						class="rating-input" id="rating-input-1-1" name="rating-input-1">
-						<label for="rating-input-1-1" class="rating-star"> </label>
-					</span>
-				</div>
-				<a class="now-get get-cart" href="#">ADD TO CART</a>
-				<div class="clearfix"></div>
-			</div>
-		</div>
-	</div>
-	<div class="col-md-4 chain-grid grid-top-chain">
-		<a href="single.html"><img class="img-responsive chain"
-			src="<?php echo base_url() ."public/default/"?>images/bo.jpg" alt=" " /></a>
-		<span class="star"> </span>
-		<div class="grid-chain-bottom">
-			<h6>
-				<a href="single.html">Lorem ipsum dolor</a>
-			</h6>
-			<div class="star-price">
-				<div class="dolor-grid">
-					<span class="actual">300$</span> <span class="reducedfrom">400$</span>
-					<span class="rating"> <input type="radio" class="rating-input"
-						id="rating-input-1-5" name="rating-input-1"> <label
-						for="rating-input-1-5" class="rating-star1"> </label> <input
-						type="radio" class="rating-input" id="rating-input-1-4"
-						name="rating-input-1"> <label for="rating-input-1-4"
-						class="rating-star1"> </label> <input type="radio"
-						class="rating-input" id="rating-input-1-3" name="rating-input-1">
-						<label for="rating-input-1-3" class="rating-star"> </label> <input
-						type="radio" class="rating-input" id="rating-input-1-2"
-						name="rating-input-1"> <label for="rating-input-1-2"
-						class="rating-star"> </label> <input type="radio"
-						class="rating-input" id="rating-input-1-1" name="rating-input-1">
-						<label for="rating-input-1-1" class="rating-star"> </label>
-					</span>
-				</div>
-				<a class="now-get get-cart" href="#">ADD TO CART</a>
-				<div class="clearfix"></div>
-			</div>
-		</div>
-	</div>
-	<div class="clearfix"></div>
-</div>
-<div class="products">
-	<h5 class="latest-product">LATEST PRODUCTS</h5>
-	<a class="view-all" href="product.html">VIEW ALL<span> </span></a>
-</div>
-<div class="product-left">
-	<div class="col-md-4 chain-grid">
-		<a href="single.html"><img class="img-responsive chain"
-			src="<?php echo base_url() ."public/default/"?>images/bott.jpg"
-			alt=" " /></a> <span class="star"> </span>
-		<div class="grid-chain-bottom">
-			<h6>
-				<a href="single.html">Lorem ipsum dolor</a>
-			</h6>
-			<div class="star-price">
-				<div class="dolor-grid">
-					<span class="actual">300$</span> <span class="reducedfrom">400$</span>
-					<span class="rating"> <input type="radio" class="rating-input"
-						id="rating-input-1-5" name="rating-input-1"> <label
-						for="rating-input-1-5" class="rating-star1"> </label> <input
-						type="radio" class="rating-input" id="rating-input-1-4"
-						name="rating-input-1"> <label for="rating-input-1-4"
-						class="rating-star1"> </label> <input type="radio"
-						class="rating-input" id="rating-input-1-3" name="rating-input-1">
-						<label for="rating-input-1-3" class="rating-star"> </label> <input
-						type="radio" class="rating-input" id="rating-input-1-2"
-						name="rating-input-1"> <label for="rating-input-1-2"
-						class="rating-star"> </label> <input type="radio"
-						class="rating-input" id="rating-input-1-1" name="rating-input-1">
-						<label for="rating-input-1-1" class="rating-star"> </label>
-					</span>
-				</div>
-				<a class="now-get get-cart" href="#">ADD TO CART</a>
-				<div class="clearfix"></div>
-			</div>
-		</div>
-	</div>
-	<div class="col-md-4 chain-grid">
-		<a href="single.html"><img class="img-responsive chain"
-			src="<?php echo base_url() ."public/default/"?>images/bottle.jpg"
-			alt=" " /></a> <span class="star"> </span>
-		<div class="grid-chain-bottom">
-			<h6>
-				<a href="single.html">Lorem ipsum dolor</a>
-			</h6>
-			<div class="star-price">
-				<div class="dolor-grid">
-					<span class="actual">300$</span> <span class="reducedfrom">400$</span>
-					<span class="rating"> <input type="radio" class="rating-input"
-						id="rating-input-1-5" name="rating-input-1"> <label
-						for="rating-input-1-5" class="rating-star1"> </label> <input
-						type="radio" class="rating-input" id="rating-input-1-4"
-						name="rating-input-1"> <label for="rating-input-1-4"
-						class="rating-star1"> </label> <input type="radio"
-						class="rating-input" id="rating-input-1-3" name="rating-input-1">
-						<label for="rating-input-1-3" class="rating-star"> </label> <input
-						type="radio" class="rating-input" id="rating-input-1-2"
-						name="rating-input-1"> <label for="rating-input-1-2"
-						class="rating-star"> </label> <input type="radio"
-						class="rating-input" id="rating-input-1-1" name="rating-input-1">
-						<label for="rating-input-1-1" class="rating-star"> </label>
-					</span>
-				</div>
-				<a class="now-get get-cart" href="#">ADD TO CART</a>
-				<div class="clearfix"></div>
-			</div>
-		</div>
-	</div>
-	<div class="col-md-4 chain-grid grid-top-chain">
-		<a href="single.html"><img class="img-responsive chain"
-			src="<?php echo base_url() ."public/default/"?>images/baa.jpg"
-			alt=" " /></a> <span class="star"> </span>
-		<div class="grid-chain-bottom">
-			<h6>
-				<a href="single.html">Lorem ipsum dolor</a>
-			</h6>
-			<div class="star-price">
-				<div class="dolor-grid">
-					<span class="actual">300$</span> <span class="reducedfrom">400$</span>
-					<span class="rating"> <input type="radio" class="rating-input"
-						id="rating-input-1-5" name="rating-input-1"> <label
-						for="rating-input-1-5" class="rating-star1"> </label> <input
-						type="radio" class="rating-input" id="rating-input-1-4"
-						name="rating-input-1"> <label for="rating-input-1-4"
-						class="rating-star1"> </label> <input type="radio"
-						class="rating-input" id="rating-input-1-3" name="rating-input-1">
-						<label for="rating-input-1-3" class="rating-star"> </label> <input
-						type="radio" class="rating-input" id="rating-input-1-2"
-						name="rating-input-1"> <label for="rating-input-1-2"
-						class="rating-star"> </label> <input type="radio"
-						class="rating-input" id="rating-input-1-1" name="rating-input-1">
-						<label for="rating-input-1-1" class="rating-star"> </label>
-					</span>
-				</div>
-				<a class="now-get get-cart" href="#">ADD TO CART</a>
-				<div class="clearfix"></div>
-			</div>
-		</div>
-	</div>
-	<div class="clearfix"></div>
-</div>
-<div class="clearfix"></div>
-</div>
-<div class="sub-cate">
-<?php $this->load->view("default/menu") ?>
-</div>
-<div class="clearfix"></div>
-</div>
+  <!-- End Chuyên mục hiển thị -->
+
+  <div class="col-md-12">
+  <div class="title"><h2 align="center"><?php echo $this->lang->line("featuredproducts"); ?></h2></div>
+  </div>
+  <?php 
+//   echo "<pre>";
+//   print_r($productnews);
+//   echo "</pre>";
+	if($productnb){
+		foreach($productnb as $value){
+			$promotion = number_format($value['promotion']);
+			$promotion = str_replace(",", ".", $promotion);
+			$price = number_format($value['price']);
+			$price= str_replace(",", ".", $price);
+			$sales = ($value['promotion'] - $value['price']) * 100;
+			$sale = ceil($sales / $value['promotion']);
+			echo '<div class="col-md-3 col-sm-6 col-xs-6">
+				    <div class="product">
+				          <a href="'.base_url().$lang.'/'.$value['cate_linkseo'].'/'.$value['linkseo'].'-p/'.$value['id'].'">
+				          <img class="img-responsive" src="'.$value['image'].'" />
+				          <h3 class="ptitle">'.$value['title'].'</h3>
+				          <p class="promotion">Giá cũ: <strike>'.$promotion.'</strike></p>
+				          <p class="price">Giá hiện tại: <font color="red">'.$price.'</font></p>';
+			if($value['promotion']){
+				echo '<div class="sale">
+				            <span>
+				              '.$sale.'%
+				            </span>
+				          </span>    
+				          </div></a>';
+			}
+					
+			echo '</div></div>';
+		}
+	}
+  ?>
+
+  <!-- End Sản phẩm nổi bật -->
+
+  <div class="col-md-12">
+  <div class="title"><h2 align="center"><?php echo $this->lang->line("news"); ?></h2></div>
+  </div>
+  <?php 
+  if($news){
+  	foreach($news as $value){
+  		echo '<div class="col-md-3 col-sm-6 col-xs-6">
+    <div class="news">
+      <a href="'.base_url().$lang.'/'.$value['cate_linkseo'].'/'.$value['linkseo'].'-n/'.$value['id'].'">
+      <img class="img-responsive" src="'.$value['image'].'" />
+      <h3 class="ntitle">'.$value['title'].'</h3>
+      <p class="description">
+       '.$value['description'].'
+      </p>
+      </a>
+    </div>
+  </div>';
+  	}
+  }
+  ?>
+
+</div> 
+</article>

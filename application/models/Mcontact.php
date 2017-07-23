@@ -45,6 +45,16 @@ class Mcontact extends CI_Model{
 	}
 	public function countAll($lang="vn") {
 		$this->db->where("lang",$lang);
-		return $this->db->count_all ( $this->_table );
+		$query = $this->db->get($this->_table);
+		return $query->num_rows();
+	}
+	public function insertContact($insert){
+		$this->db->insert($this->_table,$insert);
+	}
+	public function listContactOnTop($lang){
+		$this->db->where("lang",$lang);
+		$this->db->where("active",2);
+		$this->db->order_by("id","desc");
+		return $this->db->get($this->_table)->result_array();
 	}
 }

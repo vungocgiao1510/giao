@@ -72,13 +72,9 @@ if ($error != "") {
 			echo "<tr class='active'>";
 			echo "<td><input type='checkbox' id='box_$val[id]' name='checkAll[]' value='$val[id]' class='checkSingle'></td>";
 			echo "<td>$stt</td>";
-			echo "<td><img src='$val[image]' width='80' /></td>";
-			echo "<td><a class='editname' href='" . base_url () . "gcms/news/edit/$val[id]'>$val[title]</a></td>";
-			foreach($properties as $key => $propertie){
-				if($key == $val['properties']){
-					echo "<td>$propertie</td>";
-				}
-			}
+			echo "<td><a class='editname' href='" . base_url () . "gcms/news/edit/$val[id]'>$val[name]</a></td>";
+			echo "<td>$val[email]</td>";
+			echo "<td>$val[phone]</td>";
 			echo "<td>" . date ( "d/m/Y", strtotime ( $val ["created"] ) ) . "</td>";
 			echo "<td>" . date ( "d/m/Y", strtotime ( $val ["updated"] ) ) . "</td>";
 			if ($val ['active'] == 1) {
@@ -86,7 +82,7 @@ if ($error != "") {
 			} else {
 				echo "<td><a class='btn btn-danger active'>Đã khóa</a></td>";
 			}
-			echo "<td><a href='" . base_url () . "gcms/images/edit/$val[id]'><img src='".base_url()."public/gcms/img/edit.png' alt='Edit' title='Edit' /></a></td>";
+			echo "<td><a href='" . base_url () . "gcms/contact/view/$val[id]' class='editname'><span class='glyphicon glyphicon-eye-open'></span> Chi tiết</a></td>";
 			echo "<td><a href='" . base_url () . "gcms/images/delete/$val[id]' onclick='return confirm(\"Bán có muốn xóa bản ghi này không?\");'><img src='".base_url()."public/gcms/img/garbage.png' alt='Delete' title='Delete' /></a></td>";
 			echo "</tr>";
 		}

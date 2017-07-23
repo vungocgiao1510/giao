@@ -13,7 +13,7 @@ class Login extends LoginController {
 		$this->form_validation->set_rules ( 'password', 'Mật khẩu', 'required|min_length[5]|max_length[14]' );
 		if ($this->form_validation->run () == TRUE) {
 			$user = $this->input->post ( "txtuser" );
-			$pass = $this->input->post ( "password" );
+			$pass = md5($this->input->post ( "password" ));
 			$data = $this->Muser->checkLogin ( $user, $pass );
 			if ($data == TRUE) {
 				$ses_user = array (

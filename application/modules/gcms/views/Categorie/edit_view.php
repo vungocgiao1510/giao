@@ -32,6 +32,13 @@ if (validation_errors () != "") {
 			</div>
 		</div>
 		<div class="form-group">
+			<label for="username" class="col-sm-3 control-label">Keywords</label>
+			<div class="col-sm-9">
+				<input type="text" class="form-control" id="" name="keywords"
+					placeholder="Keywords" value="<?php echo $data['keywords']; ?>">
+			</div>
+		</div>
+		<div class="form-group">
 			<label for="username" class="col-sm-3 control-label">Thứ tự hiển thị</label>
 			<div class="col-sm-9">
 				<input type="text" class="form-control" id="" name="order"

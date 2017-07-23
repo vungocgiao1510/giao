@@ -48,6 +48,14 @@ class Mimages extends CI_Model{
 	}
 	public function countAll($lang="vn") {
 		$this->db->where("lang",$lang);
-		return $this->db->count_all ( $this->_table );
+		$query = $this->db->get($this->_table);
+		return $query->num_rows();
+	}
+	public function getImagesByProperties($lang="vn",$properties,$limit = "10"){
+		$this->db->where("lang",$lang);
+		$this->db->limit($limit);
+		$this->db->order_by("image_order","asc");
+		$this->db->where("properties",$properties);
+		return $this->db->get($this->_table)->result_array();
 	}
 }

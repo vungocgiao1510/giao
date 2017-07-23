@@ -18,11 +18,12 @@ function callMenu($data, $parent = 0, $text = "--", $select = 0, $uid="") {
 	}
 }
 function listMenu($data, $parent = 0, $text = "--", $select = 0) {
-	if($data){
+	if($data != ""){
 		foreach ( $data as $k => $value ) {
 			if ($value ['cate_parent'] == $parent) {
 				$id = $value ['id'];
 				echo "<tr class='active'>";
+				echo "<td><input type='checkbox' id='box_$value[id]' name='checkAll[]' value='$value[id]' class='checkSingle'></td>";
 				echo "<td>$value[cate_order]</td>";
 				echo "<td style='text-align:left; width:250px; padding-left:70px;'>" . $text . $value ['title'] . "</td>";
 				echo "<td>" . date ( "d/m/Y", strtotime ( $value["created"] ) ) . "</td>";
@@ -41,7 +42,26 @@ function listMenu($data, $parent = 0, $text = "--", $select = 0) {
 		}
 	} else {
 		echo "<tr>";
-		echo "<td colspan='7'>Không có dữ liệu</td>";
+		echo "<td colspan='8'>Không có dữ liệu</td>";
 		echo "</tr>";
+	}
+}
+function showMenu($data,$parent=0,$lang){
+	if($data){
+		foreach($data as $key => $value){
+			if($value['cate_parent'] == $parent){
+				if($value['check_parent'] != 1){
+					echo '<li><a href="'.base_url().$lang.'/'.$value['linkseo'].'">'.$value['title'].'</a></li>';
+				} else {
+					echo '<li><a href="'.base_url().$lang.'/'.$value['linkseo'].'">'.$value['title'].'</a>';
+					echo '<ul class="sub-menu">';
+					$id = $value['id'];
+					unset($data[$key]);
+					showMenu($data,$id,$lang);
+					echo '</ul>';
+					echo '</li>';
+				}
+			}
+		}
 	}
 }

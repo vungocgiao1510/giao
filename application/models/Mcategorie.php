@@ -14,6 +14,17 @@ class Mcategorie extends CI_Model{
 			return FALSE;
 		}
 	}
+	public function listCategorie2($lang="vn"){
+		$this->db->where("lang",$lang);
+		$this->db->where("active",1);
+		$this->db->order_by("cate_order","asc");
+		$query = $this->db->get($this->_table);
+		if($query->num_rows() > 0){
+			return $query->result_array();
+		}else{
+			return FALSE;
+		}
+	}
 	public function listCategorieNews($lang="vn"){
 		$this->db->where("active",1);
 		$this->db->where("service",1);
@@ -38,8 +49,14 @@ class Mcategorie extends CI_Model{
 			return FALSE;
 		}
 	}
-	public function listCategorieById($id){
+	public function listCategorieById($id,$lang="vn"){
 		$this->db->where("id",$id);
+		$this->db->where("lang",$lang);
+		return $this->db->get($this->_table)->row_array();
+	}
+	public function listCategorieByLinkseo($linkseo,$lang="vn"){
+		$this->db->where("linkseo",$linkseo);
+		$this->db->where("lang",$lang);
 		return $this->db->get($this->_table)->row_array();
 	}
 	public function insertCategorie($data){
@@ -55,6 +72,7 @@ class Mcategorie extends CI_Model{
 	}
 	public function countAll($lang="vn"){
 		$this->db->where("lang",$lang);
-		return $this->db->count_all($this->_table);
+		$query = $this->db->get($this->_table);
+		return $query->num_rows();
 	}
 }

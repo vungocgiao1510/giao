@@ -87,7 +87,7 @@ class Images extends AdminController {
 		$this->form_validation->set_message ( 'max_length', '{field} phải nhỏ hơn 14 ký tự.' );
 		$this->form_validation->set_message ( 'matches', '{field} không đúng, vui lòng nhập lại.' );
 		$this->form_validation->set_rules ( 'title', 'Tên bài viết', 'required|min_length[4]' );
-		$this->form_validation->set_rules ( 'link', 'Link', 'required|min_length[4]' );
+// 		$this->form_validation->set_rules ( 'link', 'Link', 'required|min_length[4]' );
 		$this->form_validation->set_rules ( 'description', 'Mô tả', 'required|min_length[4]' );
 		$this->form_validation->set_rules ( 'image', 'Hình ảnh', 'required|min_length[4]' );
 		$this->form_validation->set_rules ( 'properties', 'Chuyên mục', 'required' );
@@ -127,7 +127,7 @@ class Images extends AdminController {
 		$this->form_validation->set_message ( 'max_length', '{field} phải nhỏ hơn 14 ký tự.' );
 		$this->form_validation->set_message ( 'matches', '{field} không đúng, vui lòng nhập lại.' );
 		$this->form_validation->set_rules ( 'title', 'Tên bài viết', 'required|min_length[4]' );
-		$this->form_validation->set_rules ( 'link', 'Link', 'required|min_length[4]' );
+// 		$this->form_validation->set_rules ( 'link', 'Link', 'required|min_length[4]' );
 		$this->form_validation->set_rules ( 'description', 'Mô tả', 'required|min_length[4]' );
 		$this->form_validation->set_rules ( 'properties', 'Chuyên mục', 'required' );
 		

@@ -16,7 +16,7 @@ function unicode($str){
 			'U'=>array('Ú','Ù','Ủ','Ũ','Ụ','Ư','Ứ','Ừ','Ử','Ữ','Ự'),
 			'y'=>array('ý','ỳ','ỷ','ỹ','ỵ'),
 			'Y'=>array('Ý','Ỳ','Ỷ','Ỹ','Ỵ'),
-			'-'=>array(' ','&quot;','.',"'",'"')
+			'-'=>array(' ','&quot;','.',"'",'"','/')
 	);
 	
 	foreach($unicode as $nonUnicode=>$uni){

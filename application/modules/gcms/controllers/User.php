@@ -223,7 +223,7 @@ class User extends AdminController {
 			// Mảng chứa dữ liệu cần insert
 			$data_insert = array (
 					"username" => $this->input->post ( "username" ),
-					"password" => $this->input->post ( "password" ),
+					"password" => md5($this->input->post ( "password" )),
 					"group_id" => $this->input->post ( "group" ),
 					"created" => date ( "Y-m-d" ),
 					"active" => "1" 
@@ -326,7 +326,7 @@ class User extends AdminController {
 			);
 			// Kiểm tra xem mật khẩu có hay không, nếu có thì thêm một mảng password vào để update.
 			if ($this->input->post ( "password" )) {
-				$data_update ["password"] = $this->input->post ( "password" );
+				$data_update ["password"] = md5($this->input->post ( "password" ));
 			}
 			// Update thành viên vào trong CSDL.
 			$this->Muser->updateUser ( $data_update, $id );

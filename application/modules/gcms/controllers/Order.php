@@ -4,8 +4,8 @@ class Order extends AdminController{
 		parent::__construct();
 	}
 	public function index(){
-		$this->_data ['title'] = "Danh sách liên hệ";
-		$this->_data ['loadPage'] = "contact/index_view";
+		$this->_data ['title'] = "Danh sách đơn hàng";
+		$this->_data ['loadPage'] = "order/index_view";
 		$this->_data ['error'] = $this->session->flashdata ( "flash_error" );
 		$this->_data ['success'] = $this->session->flashdata ( "flash_mess" );
 		$this->_data ['data'] = "";
@@ -14,7 +14,7 @@ class Order extends AdminController{
 		// config setting phần phân trang.
 		$config ['base_url'] = ($this->input->get ( "keyword" )) ? base_url () . "gcms/contact/index/?keyword=" . $this->input->get ( "keyword" ) : base_url () . "gcms/contact/index/";
 		// $config ['base_url'] = base_url () . "gcms/user/index/";
-		$config ['total_rows'] = ($this->input->get ( "keyword" )) ? $this->Mcontact->countSearchContact ( $this->input->get ( "keyword" ) ) : $this->Mcontact->countAll ();
+		$config ['total_rows'] = ($this->input->get ( "keyword" )) ? $this->Morder->countSearchContact ( $this->input->get ( "keyword" ) ) : $this->Morder->countAll ();
 		$config ['per_page'] = ($this->session->userdata ( "limit" )) ? $this->session->userdata ( "limit" ) : 10;
 		$config ['uri_segment'] = 4;
 		$config ['full_tag_open'] = '<ul class="pagination">';
@@ -58,42 +58,41 @@ class Order extends AdminController{
 			// $ses_search = array("keyword" => $this->input->get("keyword"));
 			// $this->session->set_userdata($ses_search);
 			$this->_data ['keyword'] = $this->input->get ( "keyword" );
-			$this->_data ['countSearch'] = $this->Mcontact->countSearchContact ( $this->_data ['keyword'] );
-			$this->_data ['data'] = $this->Mcontact->SearchContactByKeyword ( $this->_data ['keyword'], $config ['per_page'], $start );
+			$this->_data ['countSearch'] = $this->Morder->countSearchContact ( $this->_data ['keyword'] );
+			$this->_data ['data'] = $this->Morder->SearchContactByKeyword ( $this->_data ['keyword'], $config ['per_page'], $start );
 		} elseif ($locds == "desc" || $locds == "asc") {
-			$this->_data ['data'] = $this->Mcontact->listAllContact( $config ['per_page'], $start, $locds );
+			$this->_data ['data'] = $this->Morder->listOrder( $config ['per_page'], $start, $locds );
 		} elseif ($locds == "1" || $locds == "2") {
-			$this->_data ['data'] = $this->Mcontact->listAllContact( $config ['per_page'], $start, "", $locds );
+			$this->_data ['data'] = $this->Morder->listOrder( $config ['per_page'], $start, "", $locds );
 		} else {
-			$this->_data ['data'] = $this->Mcontact->listAllContact( $config ['per_page'], $start );
+			$this->_data ['data'] = $this->Morder->listOrder( $config ['per_page'], $start );
 		}
 		// echo $this->db->last_query();
 		$this->load->view ( $this->_data ['path'], $this->_data );
 	}
 	public function view($id=""){
 		$this->_data ['error'] = "";
-		$this->_data ['title'] = "Xem thông tin người liên hệ";
-		$this->_data ['loadPage'] = "user/edit_view";
+		$this->_data ['title'] = "Xem thông tin đơn hàng";
+		$this->_data ['loadPage'] = "order/detail_view";
 		// Hiển thị thông tin member khi get được ID.
-		$this->_data ['data'] = $this->contact->getContactById ( $id );
+		$this->_data ['data'] = $this->Morder->getOrderById ( $id );
+		$this->form_validation->set_rules ( 'active', 'Duyệt', 'required');
 		if ($this->form_validation->run () == TRUE) {
 			// Mảng chưa dữ liệu cần update
 			$data_update = array (
-					"username" => $this->input->post ( "username" ),
-					"group_id" => $this->input->post ( "group" ),
 					"updated" => date ( "Y-m-d" ),
 					"active" => $this->input->post ( "active" )
 			);
 			// Sửa liên hệ vào trong CSDL.
-			$this->Mcontact->updateContact ( $data_update, $id );
+			$this->Morder->updateOrder( $id,$data_update );
 			// Flashdata báo sửa thành công.
-			$this->session->set_flashdata ( "flash_mess", "Trả lời liên hệ thành công." );
-			redirect ( base_url () . "gcms/contact/index" );
+			$this->session->set_flashdata ( "flash_mess", "Xử lý đơn hàng thành công." );
+			redirect ( base_url () . "gcms/order/index" );
 		}
 		$this->load->view ( $this->_data ['path'], $this->_data );
 	}
 	public function delete($id=""){
-		$this->Mcontact->deleteContact ( $id );
+		$this->Morder->deleteContact ( $id );
 		$this->session->set_flashdata ( "flash_mess", "Hoàn tất thủ tục xóa thành viên." );
 		redirect ( base_url () . "gcms/contact/index" );
 	}
@@ -101,7 +100,7 @@ class Order extends AdminController{
 		if ($this->input->post ( "checkAll" )) {
 			foreach ( $this->input->post ( "checkAll" ) as $del_id ) {
 				$del_id = ( int ) $del_id;
-				$this->Mcontact->deleteContact ( $del_id );
+				$this->Morder->deleteContact ( $del_id );
 			}
 			$this->session->set_flashdata ( "flash_mess", "Hoàn tất thủ tục xóa liên hệ." );
 			redirect ( base_url () . "gcms/contact/index" );

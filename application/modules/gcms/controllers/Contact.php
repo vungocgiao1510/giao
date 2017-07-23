@@ -73,14 +73,12 @@ class Contact extends AdminController{
 	public function view($id=""){
 		$this->_data ['error'] = "";
 		$this->_data ['title'] = "Xem thông tin người liên hệ";
-		$this->_data ['loadPage'] = "user/edit_view";
+		$this->_data ['loadPage'] = "contact/detail_view";
 		// Hiển thị thông tin member khi get được ID.
-		$this->_data ['data'] = $this->contact->getContactById ( $id );
+		$this->_data ['data'] = $this->Mcontact->getContactById ( $id );
 		if ($this->form_validation->run () == TRUE) {
 			// Mảng chưa dữ liệu cần update
 			$data_update = array (
-					"username" => $this->input->post ( "username" ),
-					"group_id" => $this->input->post ( "group" ),
 					"updated" => date ( "Y-m-d" ),
 					"active" => $this->input->post ( "active" )
 			);
